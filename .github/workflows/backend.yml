@@ -24,4 +24,4 @@ jobs:
           push: true
           context: ./backend
           file: ./backend/Dockerfile
-          tags: narensj/unitedbank-backend:latest,unitedbank-backend:${{ github.sha }}
+          tags: narensj/unitedbank-backend:latest,narensj/unitedbank-backend:${{ github.sha }}
