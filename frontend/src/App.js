@@ -8,14 +8,25 @@ import AdminLogin from './components/AdminLogin';
 import CustomerHome from './components/CustomerHome';
 import AdminHome from './components/AdminHome';
 
+const r = {
+  home: '/',
+  customerLogin: '/customerLogin',
+  customerHome: '/customerHome',
+  customerSignup: '/customerSignup',
+  adminLogin: '/adminLogin',
+  adminHome: '/adminHome',
+};
+
+window.appRoutes = r;
+
 export default function App() {
   const routes = [
-    ['/', <Landing />],
-    ['/customerLogin', <CustomerLogin />],
-    ['/customerHome', <CustomerHome />],
-    ['/customerSignup', <CustomerSignup />],
-    ['/adminLogin', <AdminLogin />],
-    ['/adminHome', <AdminHome />],
+    [r.home, <Landing />],
+    [r.customerLogin, <CustomerLogin />],
+    [r.customerHome, <CustomerHome />],
+    [r.customerSignup, <CustomerSignup />],
+    [r.adminLogin, <AdminLogin />],
+    [r.adminHome, <AdminHome />],
   ];
   return (
     <Router>
