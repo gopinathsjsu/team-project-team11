@@ -20,7 +20,7 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        {routes.map((r, i) => {
+        {routes.map((r) => {
           return (
             <Route path={r[0]} exact key={r[0]}>
               {r[1]}

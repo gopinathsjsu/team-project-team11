@@ -35,7 +35,29 @@ h2 {
 }
 
 :root {
-    --primary: #008d8d;
+    --primary: #039494;
+}
+
+#msg, #err {
+    color: #fa2424;
+    width: 300px;
+    position: fixed;
+    top: 42px;
+    left: 50%;
+    margin-left: -150px;
+    z-index: 1;
+    background: #d8d8d8;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+#msg:empty, #err:empty {
+    display: none;
+}
+
+#msg {
+    color: green;
 }
 
 .button, input[type="text"], input[type="password"] {

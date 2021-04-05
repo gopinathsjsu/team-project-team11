@@ -16,10 +16,10 @@ app.use(cors({
 }));
 
 [
-    ['get', '/customer/:id', handler.getCustomer],
-    ['post', '/customer', handler.createCustomer],
+    ['get', 'customer/:id', handler.getCustomer],
+    ['post', 'customer', handler.createCustomer],
 ].forEach((r) => {
-    app[r[0]](r[1], async (req, res, next) => {
+    app[r[0]]("/apiV1/" + r[1], async (req, res, next) => {
         try {
             await r[2](req, res);
         } catch (e) {

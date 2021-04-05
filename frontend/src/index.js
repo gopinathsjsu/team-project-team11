@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+window.error = (msg) => {
+  const e = window.document.getElementById('err');
+  e.innerText = msg;
+};
+window.message = (msg) => {
+  const e = window.document.getElementById('msg');
+  e.innerText = msg;
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
