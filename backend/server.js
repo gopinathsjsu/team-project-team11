@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const handler = require('./apiHandler');
 
 const app = express();
@@ -15,8 +16,24 @@ app.use(cors({
     credentials: true,
 }));
 
+app.use((req,
+         res,
+         next) => {
+    const token = req.header('authorization');
+    req.session = {};
+    if (token) {
+        try {
+            jwt.verify(token, process.env.JWT_SECRET);
+        } catch (e) {
+            res.status(401).json(err('You need to login, your session has expired'));
+        }
+        req.session = jwt.decode(token);
+    }
+    next();
+});
+
 [
-    ['get', 'customer/:id', handler.getCustomer],
+    ['get', 'customer', handler.getCustomer],
     ['post', 'customer', handler.createCustomer],
 ].forEach((r) => {
     app[r[0]]("/apiV1/" + r[1], async (req, res, next) => {

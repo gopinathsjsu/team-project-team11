@@ -3,3 +3,4 @@ import {
 } from '..';
 
 export const signupCustomer = (d) => post('customer', d);
+export const currentCustomer = () => get('customer');

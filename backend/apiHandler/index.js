@@ -12,10 +12,10 @@ const signPayload = (payload) => {
     const jwtSecret = process.env.JWT_SECRET;
     return jwt.sign(payload, jwtSecret, {expiresIn});
 };
+
 module.exports = {
     getCustomer: async (req, res) => {
-        const {id} = req.params;
-        const customer = await Customer.findById(id)
+        const customer = await Customer.findById(req.session.user._id)
             .populate('Account');
         res.json(customer);
     },
