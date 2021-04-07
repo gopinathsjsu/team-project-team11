@@ -11,7 +11,6 @@ jobs:
     - name: 'Deploy'
       uses: 'deliverybot/helm@v1'
       with:
-        helm: "helm3"
         atomic: true
         release: 'unitedbank'
         namespace: 'default'
