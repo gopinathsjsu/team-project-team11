@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - port: 5000
+      targetPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: narensj/unitedbank-backend:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 200m
+            requests:
+              cpu: 200m
+          env:
+            - name: MONGODB_CONNECTION
+              value: "{{ .Values.MONGODB_CONNECTION }}"
+            - name: PORT
+              value: "5000"
+            - name: JWT_SECRET
+              value: "test"
+            - name: ORIGIN
+              value: "*"
+            - name: TEST
+              value: "{{ .Values.test }}"
+          ports:
+            - containerPort: 5000
