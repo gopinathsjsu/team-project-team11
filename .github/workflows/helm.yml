@@ -1,0 +1,16 @@
+name: 'Deploy'
+on: ['deployment']
+
+jobs:
+  deployment:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v1
+      - name: Prep helm chart
+        run: |
+          echo "Prep"
+      - name: Deploy
+        uses: WyriHaximus/github-action-helm3@v2
+        with:
+          exec: helm upgrade --install --wait --atomic --set=MONGODB_CONNECTION=${{ secrets.MONGODB_CONNECTION }} unitedbank
+          kubeconfig: '${{ secrets.KUBECONFIG }}'
