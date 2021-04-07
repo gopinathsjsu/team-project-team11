@@ -34,5 +34,22 @@ module.exports = {
                 throw e;
             }
         }
+    },
+    loginCustomer:  async (req, res) => {
+        const { email, password } = req.body;
+        const user = await Customer.findOne({ email });
+        if (user === null) {
+            res.status(401).json(err('Email id doesn\'t exist'));
+        } else {
+            bcrypt.compare(password, user.password, (e, doseMatch) => {
+                if (doseMatch) {
+                    const payload = { user, scope: 'customer' };
+                    const token = signPayload(payload);
+                    res.json({ token, user });
+                } else {
+                    res.status(401).json(err('Email password doesn\'t match'));
+                }
+            });
+        }
     }
 };

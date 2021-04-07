@@ -60,7 +60,7 @@ h2 {
     color: green;
 }
 
-.button, input[type="text"], input[type="password"] {
+.small-margin-top, .button, input[type="text"], input[type="password"] {
     margin-top: 10px;
 }
 

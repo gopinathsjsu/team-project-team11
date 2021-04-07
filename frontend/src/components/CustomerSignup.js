@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { signupCustomer } from '../util/fetch/api';
 
 function CustomerSignup({ history }) {
@@ -30,6 +30,9 @@ function CustomerSignup({ history }) {
       </div>
       <div>
         <button className="button" onClick={handleOnSignup}>Sign up</button>
+      </div>
+      <div className="small-margin-top">
+        Already have an account <Link to={window.appRoutes.customerLogin}>Login</Link>
       </div>
     </div>
   );
