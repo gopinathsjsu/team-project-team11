@@ -4,7 +4,8 @@ const {
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {err} = require('../util');
-
+const multer = require('multer');
+const path = require("path");
 const saltRounds = 10;
 const expiresIn = 1008000;
 
@@ -51,5 +52,23 @@ module.exports = {
                 }
             });
         }
-    }
+    },
+    uploadFile: async (req, res) => {
+        const upload = multer({ dest: 'uploads/' }).array('files', 5);
+        upload(req, res, (e) => {
+            if (e) {
+                res.status(400).json(err('Error while uploading file'));
+            } else {
+                res.json({
+                    files: req.files.map((f) => f.filename),
+                    originalFiles: req.files.map((f) => f.originalname),
+                });
+            }
+        });
+    },
+    getFile: async (req, res) => {
+        const fileId = req.params.id;
+        // TODO: file path injection
+        res.sendFile(path.join(__dirname, '../uploads', fileId));
+    },
 };

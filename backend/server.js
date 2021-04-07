@@ -36,6 +36,8 @@ app.use((req,
     ['get', 'customer', handler.getCustomer],
     ['post', 'customer', handler.createCustomer],
     ['post', 'loginCustomer', handler.loginCustomer],
+    ['post', 'file', handler.uploadFile],
+    ['get', 'file/:id', handler.getFile],
 ].forEach((r) => {
     app[r[0]]("/apiV1/" + r[1], async (req, res, next) => {
         try {

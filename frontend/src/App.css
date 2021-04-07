@@ -21,6 +21,10 @@ body {
     align-items: center;
 }
 
+.flex-justify-content-space-around {
+    justify-content: space-around;
+}
+
 .flex-full {
     flex: 1;
 }
@@ -64,6 +68,10 @@ h2 {
     margin-top: 10px;
 }
 
+.medium-margin-top {
+    margin-top: 20px;
+}
+
 input[type="text"], input[type="password"] {
     height: 40px;
     width: 300px;
@@ -80,4 +88,15 @@ input[type="text"], input[type="password"] {
     border-radius: 20px;
     cursor: pointer;
     border: none;
+}
+
+.uploaded-file {
+    display: flex;
+    height: 200px;
+    justify-content: center;
+}
+
+.uploaded-file img {
+    border: 1px solid black;
+    border-radius: 10px;
 }
