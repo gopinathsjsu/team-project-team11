@@ -24,8 +24,19 @@ kubectl delete all --all -n unitedbank && kubectl delete ingress unitedbank
 
 ```
 # check template
-helm template --values production.yaml unitedbank helm/
-# deploy
-helm upgrade --values production.yaml unitedbank helm/
-
+helm template -f production.yaml unitedbank ./helm
+# deploy (install if not)
+helm upgrade --install -f production.yaml unitedbank ./helm
+# check status
+kubectl get all
 ```
+
+### EKS
+```
+# print
+aws eks update-kubeconfig --name unitedbank --dry-run
+```
+
+### TODO
+Setting up ingress
+https://faun.pub/learning-kubernetes-on-eks-by-doing-part-4-ingress-on-eks-6c5e5a34920b

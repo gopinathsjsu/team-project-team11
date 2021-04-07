@@ -37,8 +37,6 @@ spec:
           env:
             - name: MONGODB_CONNECTION
               value: "{{ .Values.MONGODB_CONNECTION }}"
-            - name: PORT
-              value: "5000"
             - name: JWT_SECRET
               value: "test"
             - name: ORIGIN
