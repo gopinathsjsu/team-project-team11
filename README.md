@@ -33,6 +33,10 @@ kubectl get all
 
 ### EKS
 ```
+# check context
+kubectl config get-contexts
+# set context
+kubectl config current-context <context>
 # print
 aws eks update-kubeconfig --name unitedbank --dry-run
 ```
