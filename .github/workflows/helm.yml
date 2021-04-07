@@ -1,9 +1,6 @@
 name: 'Deploy'
 on: 
   workflow_dispatch:
-    inputs:
-      tags:
-        description: 'Deploy helm' 
 
 jobs:
   deployment:
