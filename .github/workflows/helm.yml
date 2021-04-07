@@ -13,5 +13,5 @@ jobs:
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade --install --wait --atomic --set=MONGODB_CONNECTION=${{ secrets.MONGODB_CONNECTION }} unitedbank
+          exec: helm upgrade --install --wait --atomic --set=MONGODB_CONNECTION=${{ secrets.MONGODB_CONNECTION }} unitedbank ./helm
           kubeconfig: '${{ secrets.KUBECONFIG }}'
