@@ -1,46 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { currentCustomer, fileUrl } from '../util/fetch/api';
-import FileUpload from './FileUpload';
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import CustomerProfile from './CustomerProfile';
+import CustomerTransactions from './CustomerTransactions';
 
 const CustomerHome = () => {
-  const [customer, setCustomer] = useState(null);
-  const [filesUploaded, setFilesUploaded] = useState([]);
-  const handleOnFileUpload = (f) => {
-    setFilesUploaded(f.files);
-  };
+  const r = window.appRoutes;
 
-  useEffect(() => {
-    (async () => {
-      setCustomer(await currentCustomer());
-    })();
-  }, []);
+  const routes = [
+    [r.customerProfile, <CustomerProfile />, true],
+    [r.customerTransactions, <CustomerTransactions />, true],
+  ];
 
   return (
-    <div className="center">
-      {customer ? (
-        <>
-          <h2>Hello {customer.name}!</h2>
-          <div>{customer.email}</div>
-          <div>You have {customer.accounts.length} account(s)</div>
-          <div>
-            Request for a new account
-          </div>
-          <div className="flex center flex-justify-content-space-around medium-margin-top">
-            <button className="button">Open a savings account</button>
-            <button className="button">Open a checking account</button>
-          </div>
-          <div>
-            <FileUpload singleFile={false} onUpload={handleOnFileUpload} />
-          </div>
-          <div className="uploaded-file medium-margin-top">
-            {filesUploaded.map((f) => {
-              return <img key={f} src={fileUrl(f)} alt={fileUrl(f)} />;
-            })}
-          </div>
-
-        </>
-      ) : 'Loading your profile'}
-
+    <div>
+      <div>
+        <Link to={r.customerProfile}>Profile</Link>
+        <Link to={r.customerTransactions}>Transaction</Link>
+      </div>
+      <div>
+        {routes.map((r) => {
+          return (
+            <Route path={r[0]} exact={r[2]} key={r[0]}>
+              {r[1]}
+            </Route>
+          );
+        })}
+      </div>
     </div>
   );
 };

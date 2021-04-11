@@ -36,25 +36,38 @@ module.exports = {
             }
         }
     },
-    loginCustomer:  async (req, res) => {
-        const { email, password } = req.body;
-        const user = await Customer.findOne({ email });
+    loginCustomer: async (req, res) => {
+        const {email, password} = req.body;
+        const user = await Customer.findOne({email});
         if (user === null) {
             res.status(401).json(err('Email id doesn\'t exist'));
         } else {
             bcrypt.compare(password, user.password, (e, doseMatch) => {
                 if (doseMatch) {
-                    const payload = { user, scope: 'customer' };
+                    const payload = {user, scope: 'customer'};
                     const token = signPayload(payload);
-                    res.json({ token, user });
+                    res.json({token, user});
                 } else {
                     res.status(401).json(err('Email password doesn\'t match'));
                 }
             });
         }
     },
+    loginAdmin: async (req, res) => {
+        const pwd = "admin"
+        const eml = "admin@unitedbank.com"
+        const {email, password} = req.body;
+        if (email != eml || password != pwd) {
+            res.status(401).json(err('Email password doesn\'t match'));
+        } else {
+            const user = {email, name:"Admin"};
+            const payload = {user, scope: 'admin'};
+            const token = signPayload(payload);
+            res.json({token, user});
+        }
+    },
     uploadFile: async (req, res) => {
-        const upload = multer({ dest: 'uploads/' }).array('files', 5);
+        const upload = multer({dest: 'uploads/'}).array('files', 5);
         upload(req, res, (e) => {
             if (e) {
                 res.status(400).json(err('Error while uploading file'));

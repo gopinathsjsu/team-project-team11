@@ -15,25 +15,28 @@ const r = {
   customerSignup: '/customerSignup',
   adminLogin: '/adminLogin',
   adminHome: '/adminHome',
+  customerProfile: '/customerHome/profile',
+  customerTransactions: '/customerHome/transactions',
 };
 
 window.appRoutes = r;
 
 export default function App() {
   const routes = [
-    [r.home, <Landing />],
-    [r.customerLogin, <CustomerLogin />],
-    [r.customerHome, <CustomerHome />],
-    [r.customerSignup, <CustomerSignup />],
-    [r.adminLogin, <AdminLogin />],
-    [r.adminHome, <AdminHome />],
+    [r.home, <Landing />, true],
+    [r.customerLogin, <CustomerLogin />, true],
+    [r.customerHome, <CustomerHome />, false],
+    [r.customerSignup, <CustomerSignup />, true],
+    [r.adminLogin, <AdminLogin />, true],
+    [r.adminHome, <AdminHome />, false],
   ];
+
   return (
     <Router>
       <Switch>
         {routes.map((r) => {
           return (
-            <Route path={r[0]} exact key={r[0]}>
+            <Route path={r[0]} exact={r[2]} key={r[0]}>
               {r[1]}
             </Route>
           );

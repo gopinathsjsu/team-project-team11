@@ -11,7 +11,7 @@ const CustomerLogin = ({ history }) => {
     const password = passwordRef.current.value;
     const { token } = await loginCustomer({ email, password });
     window.localStorage.setItem('token', token);
-    history.push(window.appRoutes.customerHome);
+    history.push(window.appRoutes.customerProfile);
   };
 
   return (
