@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 const Landing = () => {
   return (
     <div className="full">
-      <h2 className="center">Welcome to UnitedBank</h2>
+      <div className="header">
+        <div className="center">
+          Welcome to UnitedBank
+        </div>
+      </div>
       <div className="flex flex-align-center">
         <div className="flex-full center">
           <div>Do you have an account?</div>

@@ -41,6 +41,7 @@
     "react/jsx-one-expression-per-line": "off",
     "no-underscore-dangle": "off",
     "react/button-has-type": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }

@@ -1,10 +1,15 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import CustomerProfile from './CustomerProfile';
 import CustomerTransactions from './CustomerTransactions';
 
-const CustomerHome = () => {
+const CustomerHome = ({ history }) => {
   const r = window.appRoutes;
+
+  const onLogout = () => {
+    window.localStorage.clear();
+    history.push(window.appRoutes.home);
+  };
 
   const routes = [
     [r.customerProfile, <CustomerProfile />, true],
@@ -16,6 +21,7 @@ const CustomerHome = () => {
       <div className="header">
         <Link to={r.customerProfile}>My Profile</Link>
         <Link to={r.customerTransactions}>My Transaction</Link>
+        <button className="button no-margin-top" onClick={onLogout}>Logout</button>
       </div>
       <div>
         {routes.map((r) => {
@@ -30,4 +36,4 @@ const CustomerHome = () => {
   );
 };
 
-export default CustomerHome;
+export default withRouter(CustomerHome);
