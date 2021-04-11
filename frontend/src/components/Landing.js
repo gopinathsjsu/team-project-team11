@@ -8,15 +8,15 @@ const Landing = () => {
       <div className="flex flex-align-center">
         <div className="flex-full center">
           <div>Do you have an account?</div>
-          <Link to="/customerLogin">Login here</Link>
+          <Link to={window.appRoutes.customerLogin}>Login here</Link>
         </div>
         <div className="flex-full center">
           <div>Do you want to create an account?</div>
-          <Link to="/customerSignup">Signup here</Link>
+          <Link to={window.appRoutes.customerSignup}>Signup here</Link>
         </div>
         <div className="flex-full center">
           <div>Are you a bank admin?</div>
-          <Link to="/adminLogin">Login here</Link>
+          <Link to={window.appRoutes.adminLogin}>Login here</Link>
         </div>
       </div>
     </div>
