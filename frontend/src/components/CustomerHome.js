@@ -13,9 +13,9 @@ const CustomerHome = () => {
 
   return (
     <div>
-      <div>
-        <Link to={r.customerProfile}>Profile</Link>
-        <Link to={r.customerTransactions}>Transaction</Link>
+      <div className="header">
+        <Link to={r.customerProfile}>My Profile</Link>
+        <Link to={r.customerTransactions}>My Transaction</Link>
       </div>
       <div>
         {routes.map((r) => {

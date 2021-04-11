@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { currentCustomer, fileUrl } from '../util/fetch/api';
+import { currentCustomer } from '../util/fetch/api';
 
 const CustomerTransactions = () => {
   const [customer, setCustomer] = useState(null);
-  const [filesUploaded, setFilesUploaded] = useState([]);
-  const handleOnFileUpload = (f) => {
-    setFilesUploaded(f.files);
-  };
-
   useEffect(() => {
     (async () => {
       setCustomer(await currentCustomer());
