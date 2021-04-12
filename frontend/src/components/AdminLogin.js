@@ -11,7 +11,7 @@ const AdminLogin = ({ history }) => {
     const password = passwordRef.current.value;
     const { token } = await loginAdmin({ email, password });
     window.localStorage.setItem('token', token);
-    history.push(window.appRoutes.adminHome);
+    history.push(window.appRoutes.accountRequests);
   };
 
   return (

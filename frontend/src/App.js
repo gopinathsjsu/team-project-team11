@@ -17,6 +17,8 @@ const r = {
   adminHome: '/adminHome',
   customerProfile: '/customerHome/profile',
   customerTransactions: '/customerHome/transactions',
+  accountAdjustments: '/adminHome/accountAdjustments',
+  accountRequests: '/adminHome/accountRequests',
 };
 
 window.appRoutes = r;

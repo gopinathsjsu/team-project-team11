@@ -1,11 +1,16 @@
 module.exports = (mongoose) => {
-    const accountSchema = new mongoose.Schema({
-            balance: {type: Number},
-            type: {type: String},
+    return mongoose.model('account', new mongoose.Schema({
+            isActive: {type: Boolean, default: false},
+            customer: {type: mongoose.Schema.Types.ObjectId, ref: 'customer', required: true},
+            balance: {type: Number, default: 0},
+            type: {
+                type: String,
+                enum: ['saving', 'checking'],
+                default: 'saving',
+            },
+            files: [{type: String, required: true}]
         },
         {
             timestamps: true,
-        });
-
-    return mongoose.model('account', accountSchema);
+        }));
 };

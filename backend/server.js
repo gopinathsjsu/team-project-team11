@@ -34,11 +34,14 @@ app.use((req,
 
 [
     ['get', 'customer', handler.getCustomer, 'customer'],
-    ['post', 'customer', handler.createCustomer, 'customer'],
+    ['post', 'customer', handler.createCustomer, null],
     ['post', 'loginCustomer', handler.loginCustomer, null],
     ['post', 'loginAdmin', handler.loginAdmin, null],
     ['post', 'file', handler.uploadFile, null],
     ['get', 'file/:id', handler.getFile, null],
+    ['post', 'addAccount', handler.addAccount, 'customer'],
+    ['get', 'accountRequests', handler.getAccountRequests, 'admin'],
+    ['post', 'approveAccountRequest', handler.approveAccountRequest, 'admin'],
 ].forEach((r) => {
     app[r[0]]("/apiV1/" + r[1], async (req, res, next) => {
         if (r[3] !== null && r[3] !== req.session.scope) {

@@ -91,15 +91,19 @@ input[type="text"], input[type="password"] {
     font-size: medium;
 }
 
+.button.small {
+    line-height: 20px;
+    font-size: small;
+}
+
 .uploaded-file {
     display: flex;
-    height: 200px;
-    justify-content: center;
 }
 
 .uploaded-file img {
-    border: 1px solid black;
     border-radius: 10px;
+    margin-right: 20px;
+    width: 200px;
 }
 
 .header {
@@ -119,4 +123,31 @@ input[type="text"], input[type="password"] {
 
 .no-margin-top {
     margin-top: 0;
+}
+
+.body {
+    padding: 10px 60px 0;
+}
+
+hr {
+    margin: 20px 0;
+}
+
+.accounts {
+    display: flex;
+}
+
+.accounts > div {
+    margin-top: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid black;
+}
+
+.table {
+    width: 100%;
+    text-align: left;
+}
+
+.border-bottom {
+    border-bottom: 1px solid black;
 }

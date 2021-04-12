@@ -1,10 +1,9 @@
 module.exports = (mongoose) => {
-    const customerSchema = new mongoose.Schema({
+    return mongoose.model('customer', new mongoose.Schema({
             name: {type: String, required: true},
             email: {type: String, required: true, index: {unique: true}},
             password: {type: String, required: true},
-            profilePic: {type: String},
-            accounts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Account'}],
+            profilePic: {type: String}
         },
         {
             timestamps: true,
@@ -13,7 +12,5 @@ module.exports = (mongoose) => {
                     delete ret.password;
                 },
             },
-        });
-
-    return mongoose.model('customer', customerSchema);
+        }));
 };

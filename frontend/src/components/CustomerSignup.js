@@ -18,7 +18,7 @@ function CustomerSignup({ history }) {
 
   return (
     <div className="center">
-      <h2>Signup with us</h2>
+      <h2>Signup with UnitedBank</h2>
       <div>
         <input type="text" name="name" placeholder="Name" ref={nameRef} />
       </div>
