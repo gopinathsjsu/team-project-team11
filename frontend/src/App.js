@@ -17,6 +17,7 @@ const r = {
   adminHome: '/adminHome',
   customerProfile: '/customerHome/profile',
   customerTransactions: '/customerHome/transactions',
+  customerTransact: '/customerHome/transact',
   accountAdjustments: '/adminHome/accountAdjustments',
   accountRequests: '/adminHome/accountRequests',
 };

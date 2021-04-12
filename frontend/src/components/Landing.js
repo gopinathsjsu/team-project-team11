@@ -9,7 +9,7 @@ const Landing = () => {
           Welcome to UnitedBank
         </div>
       </div>
-      <div className="flex flex-align-center">
+      <div className="flex flex-align-center medium-margin-top">
         <div className="flex-full center">
           <div>Do you have an account?</div>
           <Link to={window.appRoutes.customerLogin}>Login here</Link>

@@ -47,10 +47,10 @@ const CustomerProfile = () => {
           <table className="table">
             <thead>
               <tr>
-                <th>Account Id</th>
-                <th>Account type</th>
-                <th>Balance</th>
-                <th>Account status</th>
+                <td>Account Id</td>
+                <td>Account type</td>
+                <td>Balance</td>
+                <td>Account status</td>
               </tr>
             </thead>
             <tbody>

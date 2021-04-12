@@ -33,12 +33,14 @@ const AccountAdjustments = () => {
         <div>{accounts.length === 0 && 'No accounts to show'}</div>
         <table className="table">
           <thead>
-            <th>Account ID</th>
-            <th>Balance</th>
-            <th>Account Type</th>
-            <th>Customer Name</th>
-            <th>Customer Email</th>
-            <th>&nbsp;</th>
+            <tr>
+              <td>Account ID</td>
+              <td>Balance</td>
+              <td>Account Type</td>
+              <td>Customer Name</td>
+              <td>Customer Email</td>
+              <td>&nbsp;</td>
+            </tr>
           </thead>
           <tbody>
             {accounts.map((account) => {

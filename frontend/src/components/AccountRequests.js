@@ -31,17 +31,19 @@ const AccountRequests = () => {
         <div>{accountRequests.length === 0 && 'You have no new requests to approve'}</div>
         <table className="table">
           <thead>
-            <th>Account ID</th>
-            <th>Balance</th>
-            <th>Account Type</th>
-            <th>Customer Name</th>
-            <th>Customer Email</th>
-            <th>&nbsp;</th>
+            <tr>
+              <td>Account ID</td>
+              <td>Balance</td>
+              <td>Account Type</td>
+              <td>Customer Name</td>
+              <td>Customer Email</td>
+              <td>&nbsp;</td>
+            </tr>
           </thead>
           <tbody>
             {accountRequests.map((account) => {
               return (
-                <>
+                <React.Fragment key={account._id}>
                   <tr>
                     <td>{account._id}</td>
                     <td>${account.balance}</td>
@@ -63,7 +65,7 @@ const AccountRequests = () => {
                       </div>
                     </td>
                   </tr>
-                </>
+                </React.Fragment>
               );
             })}
           </tbody>

@@ -89,6 +89,7 @@ input[type="text"], input[type="password"] {
     cursor: pointer;
     border: none;
     font-size: medium;
+    font-weight: bold;
 }
 
 .button.small {
@@ -110,7 +111,6 @@ input[type="text"], input[type="password"] {
     padding: 20px 40px;
     background: var(--primary);
     box-shadow: 0 0 18px -2px black;
-    margin-bottom: 20px;
     color: white;
 }
 
@@ -146,6 +146,19 @@ hr {
 .table {
     width: 100%;
     text-align: left;
+}
+
+.table tr:hover {
+    background: #e9e9e9;
+}
+
+.table thead tr:hover, .table thead tr {
+    background: aliceblue;
+    font-weight: bolder;
+}
+
+.table tr td {
+    padding: 10px 10px 10px;
 }
 
 .border-bottom {
