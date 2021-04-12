@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { approveAccountRequest, fileUrl, getAccountRequests } from '../util/fetch/api';
+import {
+  approveAccountRequest, fileUrl, getAccountRequests, getAccounts,
+} from '../util/fetch/api';
 
 const AccountRequests = () => {
   const [accountRequests, setAccountRequests] = useState([]);
 
   useEffect(() => {
     (async () => {
-      setAccountRequests(await getAccountRequests());
+      setAccountRequests(await getAccounts());
     })();
   }, []);
 

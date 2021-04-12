@@ -95,10 +95,20 @@ module.exports = {
             .populate('customer');
         return res.json(account);
     },
+    getAllAccounts: async (req, res) => {
+        const account = await Account.find()
+            .populate('customer');
+        return res.json(account);
+    },
     approveAccountRequest: async (req, res) => {
         const account = await Account.findById(req.body._id);
         account.isActive = true;
         account.balance = parseInt(req.body.balance);
         return res.json(await account.save());
     },
+    updateAccountBalance: async (req, res) => {
+        const account = await Account.findById(req.body._id);
+        account.balance = parseInt(req.body.balance);
+        return res.json(await account.save());
+    }
 };

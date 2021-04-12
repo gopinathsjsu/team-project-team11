@@ -9,6 +9,8 @@ export const loginAdmin = (d) => post('loginAdmin', d);
 export const addAccount = (d) => post('addAccount', d);
 export const getAccountRequests = () => get('accountRequests');
 export const approveAccountRequest = (d) => post('approveAccountRequest', d);
+export const updateAccountBalance = (d) => post('accountBalance', d);
+export const getAccounts = () => get('accounts');
 
 export const fileUrl = (fileId) => {
   return `${apiUrl}/file/${fileId}`;
