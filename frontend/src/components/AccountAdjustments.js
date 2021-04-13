@@ -57,7 +57,7 @@ const AccountAdjustments = () => {
                   <td>{account.customer.name}</td>
                   <td>{account.customer.email}</td>
                   <td>
-                    <button onClick={(acc) => {
+                    <button onClick={() => {
                       saveBalance(account);
                     }}>
                       Update balance

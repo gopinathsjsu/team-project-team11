@@ -110,5 +110,22 @@ module.exports = {
         const account = await Account.findById(req.body._id);
         account.balance = parseInt(req.body.balance);
         return res.json(await account.save());
+    },
+    transferAmount: async (req, res) => {
+        let {from, to, amount} = req.body;
+        amount = parseInt(amount);
+        const fromAccount = await Account.findById(from);
+        const toAccount = await Account.findById(to);
+        if (fromAccount.customer.toString() !== req.session.user._id) {
+            return res.status(401).json(err(`This account does not belong to you`));
+        }
+        if (fromAccount.balance < amount) {
+            return res.status(400).json(err(`In-sufficient balance in ${from}`));
+        }
+        fromAccount.balance -= amount;
+        toAccount.balance += amount;
+        await fromAccount.save();
+        await toAccount.save();
+        return res.json(amount);
     }
 };

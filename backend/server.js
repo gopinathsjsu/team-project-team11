@@ -44,6 +44,7 @@ app.use((req,
     ['post', 'approveAccountRequest', handler.approveAccountRequest, 'admin'],
     ['get', 'accounts', handler.getAllAccounts, 'admin'],
     ['post', 'accountBalance', handler.updateAccountBalance, 'admin'],
+    ['post', 'transferAmount', handler.transferAmount, 'customer'],
 ].forEach((r) => {
     app[r[0]]("/apiV1/" + r[1], async (req, res, next) => {
         if (r[3] !== null && r[3] !== req.session.scope) {
@@ -55,6 +56,7 @@ app.use((req,
         } catch (e) {
             //Dont show message in prod
             res.status(500).json({err: 'Something went wrong! ' + e.message});
+            console.log(e);
             next();
         }
     });
