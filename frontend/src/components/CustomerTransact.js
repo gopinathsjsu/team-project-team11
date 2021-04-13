@@ -16,6 +16,9 @@ const CustomerTransact = () => {
       return;
     }
     await transferAmount({ from, to, amount });
+    setCustomer(await currentCustomer());
+    alert(`$${amount} transferred`);
+    amountRef.current.value = '';
   };
 
   useEffect(() => {
@@ -40,7 +43,7 @@ const CustomerTransact = () => {
             </div>
             <div>
               &nbsp;&nbsp;
-              <span>To&nbsp;&nbsp;</span>
+              <span>to&nbsp;&nbsp;</span>
               <select ref={toRef}>
                 {customer.accounts.filter((a) => a.isActive).map((a) => {
                   return <option key={a._id} value={a._id}>{a._id} (${a.balance})</option>;
