@@ -16,8 +16,10 @@ mongoose.connection.once('open', () => {
 
 const Customer = require('./schemas/customer')(mongoose);
 const Account = require('./schemas/account')(mongoose);
+const Transactions = require('./schemas/transactions')(mongoose);
 
 module.exports = {
     Customer,
-    Account
+    Account,
+    Transactions
 };

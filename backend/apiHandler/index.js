@@ -1,5 +1,5 @@
 const {
-    Customer, Account
+    Customer, Account, Transactions
 } = require('../mongodb');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -116,16 +116,26 @@ module.exports = {
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
         const toAccount = await Account.findById(to);
-        if (fromAccount.customer.toString() !== req.session.user._id) {
+        const customer = req.session.user._id
+        if (fromAccount.customer.toString() !== customer) {
             return res.status(401).json(err(`This account does not belong to you`));
         }
         if (fromAccount.balance < amount) {
             return res.status(400).json(err(`In-sufficient balance in ${from}`));
         }
+        const transaction = new Transactions({from, to, amount, customer});
+        await transaction.save();
         fromAccount.balance -= amount;
         toAccount.balance += amount;
         await fromAccount.save();
         await toAccount.save();
         return res.json(amount);
+    },
+    getTransactions: async (req, res) => {
+        const customer = req.session.user._id
+        const transaction = await Transactions.find({customer})
+            .populate('from')
+            .populate('to');
+        return res.json(transaction);
     }
 };
