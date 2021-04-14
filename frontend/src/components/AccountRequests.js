@@ -8,7 +8,7 @@ const AccountRequests = () => {
 
   useEffect(() => {
     (async () => {
-      setAccountRequests(await getAccounts());
+      setAccountRequests(await getAccountRequests());
     })();
   }, []);
 
@@ -19,8 +19,8 @@ const AccountRequests = () => {
       alert('Please enter a number');
     } else {
       await approveAccountRequest({ _id: account._id, balance });
-      alert('Account request has been approved');
       setAccountRequests(await getAccountRequests());
+      alert('Account request has been approved');
     }
   };
 
