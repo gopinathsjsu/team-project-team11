@@ -116,7 +116,7 @@ module.exports = {
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
         const toAccount = await Account.findById(to);
-        const customer = req.session.user._id
+        const customer = req.session.user._id;
         if (fromAccount.customer.toString() !== customer) {
             return res.status(401).json(err(`This account does not belong to you`));
         }
@@ -129,6 +129,23 @@ module.exports = {
         toAccount.balance += amount;
         await fromAccount.save();
         await toAccount.save();
+        return res.json(amount);
+    },
+    transferExternalAmount: async (req, res) => {
+        let {from, toExternal, amount} = req.body;
+        amount = parseInt(amount);
+        const fromAccount = await Account.findById(from);
+        const customer = req.session.user._id;
+        if (fromAccount.customer.toString() !== customer) {
+            return res.status(401).json(err(`This account does not belong to you`));
+        }
+        if (fromAccount.balance < amount) {
+            return res.status(400).json(err(`In-sufficient balance in ${from}`));
+        }
+        const transaction = new Transactions({from, toExternal, amount, customer, isExternal: true});
+        await transaction.save();
+        fromAccount.balance -= amount;
+        await fromAccount.save();
         return res.json(amount);
     },
     getTransactions: async (req, res) => {

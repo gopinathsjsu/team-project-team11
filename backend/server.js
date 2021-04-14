@@ -45,6 +45,7 @@ app.use((req,
     ['get', 'accounts', handler.getAllAccounts, 'admin'],
     ['post', 'accountBalance', handler.updateAccountBalance, 'admin'],
     ['post', 'transferAmount', handler.transferAmount, 'customer'],
+    ['post', 'transferExternalAmount', handler.transferExternalAmount, 'customer'],
     ['get', 'transactions', handler.getTransactions, 'customer'],
 ].forEach((r) => {
     app[r[0]]("/apiV1/" + r[1], async (req, res, next) => {
