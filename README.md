@@ -57,6 +57,22 @@ aws eks update-kubeconfig --name unitedbank --dry-run
 Setting up ingress
 https://faun.pub/learning-kubernetes-on-eks-by-doing-part-4-ingress-on-eks-6c5e5a34920b
 
+### Dev set up 
+
+1. Install node and npm
+2. Install mongodb locally ex for mac use $  brew tap mongodb/brew && brew install mongodb-community && brew services start mongodb/brew/mongodb-community
+
+```
+# to start React frontend
+cd frontend && npm install npm start
+
+# please configure your mongodb connection string in backend/.env
+
+# to start node backend
+cd backend && npm install npm start
+```
+
+
 ### XP Core Value
 
 #### Simplicity : Akash
