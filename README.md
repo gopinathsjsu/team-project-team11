@@ -70,7 +70,7 @@ Combined with communication, simplicity, and feedback, respect added value to th
 Everyone gives and feels the respect they deserve as a valued team member. 
 Everyone contributes values such as enthusiasm and responsibility.
 
-#### Communication,Courage : Naren
+#### Communication and Courage : Naren
 Success of a project relies heavily on Communication. Lack of communication creates problems. I made sure that all the team members are communicating well on a constant and continuous basis. I have created a Whatsapp group as well as We did daily virtual meeting for half an hour to have recent progress on the project and to make sure that everyone is on the same page. Initially we had lots of discussions on how to work on implementation of certain features. This includes speaking up against what would not work and anything that affects the project’s effectiveness, or accept feedback and improve methodologies.
 
 
