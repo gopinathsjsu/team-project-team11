@@ -64,12 +64,12 @@ https://faun.pub/learning-kubernetes-on-eks-by-doing-part-4-ingress-on-eks-6c5e5
 
 ```
 # to start React frontend
-cd frontend && npm install npm start
+cd frontend && npm install && npm start
 
 # please configure your mongodb connection string in backend/.env
 
 # to start node backend
-cd backend && npm install npm start
+cd backend && npm install && npm start
 ```
 
 
