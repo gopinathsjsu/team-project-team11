@@ -58,7 +58,7 @@ const CustomerProfile = () => {
                 return (
                   <tr key={a._id}>
                     <td>{a._id}</td>
-                    <td>{a.type}</td>
+                    <td>{a.accountType}</td>
                     <td>${a.balance}</td>
                     <td>{a.isActive ? 'Active' : 'Waiting for approval'}</td>
                   </tr>
