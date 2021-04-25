@@ -18,6 +18,7 @@ const r = {
   customerProfile: '/customerHome/profile',
   customerTransactions: '/customerHome/transactions',
   customerTransact: '/customerHome/transact',
+  billerPayments: '/customerHome/billerPayments',
   accountAdjustments: '/adminHome/accountAdjustments',
   accountRequests: '/adminHome/accountRequests',
 };
