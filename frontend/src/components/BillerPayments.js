@@ -28,10 +28,10 @@ const BillerPayments = () => {
     })();
   }, []);
 
-  return (
-    <div className="body">
-      {customer ? (
-        <>
+  const loadCustomerTransactionPage = () => {
+    if (customer) {
+      return customer.accounts.length > 0
+        ? (<div>
           <h2>Transfer to external accounts</h2>
           <div className="flex-column">
             <div className="medium-margin-top flex">
@@ -57,9 +57,15 @@ const BillerPayments = () => {
             </div>
             <div><button className="large-margin-top button large-margin-left  fixed-width-tags" onClick={handleOnExternalTransfer}>Transfer</button></div>
           </div>
-        </>
-      ) : 'Loading your profile'}
+        </div>) : (<h2>You dont have any account added yet.
+          Please request for an account to use this feature</h2>);
+    }
+    return 'Loading your profile';
+  };
 
+  return (
+    <div className="body">
+      {loadCustomerTransactionPage()}
     </div>
   );
 };
