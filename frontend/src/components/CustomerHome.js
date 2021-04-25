@@ -3,6 +3,7 @@ import { Link, Route, withRouter } from 'react-router-dom';
 import CustomerProfile from './CustomerProfile';
 import CustomerTransactions from './CustomerTransactions';
 import CustomerTransact from './CustomerTransact';
+import BillerPayments from './BillerPayments';
 
 const CustomerHome = ({ history }) => {
   const r = window.appRoutes;
@@ -16,6 +17,7 @@ const CustomerHome = ({ history }) => {
     [r.customerProfile, <CustomerProfile />, true],
     [r.customerTransactions, <CustomerTransactions />, true],
     [r.customerTransact, <CustomerTransact />, true],
+    [r.billerPayments, <BillerPayments />, true],
   ];
 
   return (
@@ -24,6 +26,7 @@ const CustomerHome = ({ history }) => {
         <Link to={r.customerProfile}>My Profile</Link>
         <Link to={r.customerTransactions}>My Transaction</Link>
         <Link to={r.customerTransact}>Transact</Link>
+        <Link to={r.billerPayments}>Biller Payments</Link>
         <button className="button no-margin-top" onClick={onLogout}>Logout</button>
       </div>
       <div>
