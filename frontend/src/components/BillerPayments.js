@@ -33,26 +33,29 @@ const BillerPayments = () => {
       {customer ? (
         <>
           <h2>Transfer to external accounts</h2>
-          <div className="flex">
-            <div>
-              <span>From&nbsp;&nbsp;</span>
+          <div className="flex-column">
+            <div className="medium-margin-top flex">
+              <div className="fixed-width-tags medium-margin-right bolder-text">From&nbsp;&nbsp;</div>
               <select ref={extFromRef}>
                 {customer.accounts.filter((a) => a.isActive).map((a) => {
                   return <option key={a._id} value={a._id}>{a._id} (${a.balance})</option>;
                 })}
               </select>
             </div>
-            <div>
-                            &nbsp;&nbsp;
-              <span>to&nbsp;&nbsp;</span>
-              <select ref={extToRef}>
+            <div className="medium-margin-top flex">
+              <div className="fixed-width-tags medium-margin-right  bolder-text">Select Biller&nbsp;&nbsp;</div>
+              <div><select ref={extToRef}>
                 {[{ name: 'Electricity' }, { name: 'Water' }].map((e, i) => {
                   return <option key={i}>{e.name}</option>;
                 })}
-              </select>
+              </select></div>
             </div>
-            <input type="number" ref={extAmountRef} placeholder="Amount" className="small-margin-left" />
-            <button className="small-margin-left" onClick={handleOnExternalTransfer}>Transfer</button>
+
+            <div className="medium-margin-top flex">
+              <div className="fixed-width-tags medium-margin-right bolder-text">Amount&nbsp;&nbsp;</div>
+              <input type="number" ref={extAmountRef} placeholder="Amount" />
+            </div>
+            <div><button className="large-margin-top button large-margin-left  fixed-width-tags" onClick={handleOnExternalTransfer}>Transfer</button></div>
           </div>
         </>
       ) : 'Loading your profile'}
