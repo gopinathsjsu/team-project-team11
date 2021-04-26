@@ -157,7 +157,14 @@ module.exports = {
     },
     getTransactions: async (req, res) => {
         const customer = req.session.user._id
-        const transaction = await Transactions.find({customer})
+
+        const accounts = (await Account.find({customer})).map((account) => account._id);
+
+        const transaction = await Transactions.find(
+            { $or: [{
+                from : { $in : accounts }
+            }, {to : { $in : accounts}}] },
+        )
             .populate('from')
             .populate('to');
         return res.json(transaction);
