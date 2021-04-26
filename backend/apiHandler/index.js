@@ -53,6 +53,12 @@ module.exports = {
             });
         }
     },
+    updateCustomer: async (req, res) => {
+            const customer = await Customer.findById(req.session.user._id);
+            Object.assign(customer, req.body);
+            const cust = await customer.save();
+            res.json(cust);
+    },
     loginAdmin: async (req, res) => {
         const pwd = "admin"
         const eml = "admin@unitedbank.com"

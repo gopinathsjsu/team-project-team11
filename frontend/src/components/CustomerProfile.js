@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { addAccount, currentCustomer, fileUrl } from '../util/fetch/api';
+import {
+  addAccount, currentCustomer, fileUrl, updateCustomer,
+} from '../util/fetch/api';
 import FileUpload from './FileUpload';
 
 const CustomerProfile = () => {
@@ -10,6 +12,12 @@ const CustomerProfile = () => {
 
   const handleOnFileUpload = (f) => {
     setFilesUploaded(f.files);
+  };
+
+  const handleOnImageUpload = async ({ files }) => {
+    const fileId = files[0];
+    await updateCustomer({ profilePic: fileId });
+    setCustomer({ ...customer, profilePic: fileId });
   };
 
   useEffect(() => {
@@ -44,7 +52,9 @@ const CustomerProfile = () => {
       setFilesUploaded([]);
       alert('Your request for a new account has been sent.');
     }
-    setCustomer(await currentCustomer());
+    const cust = await currentCustomer();
+    setCustomer(cust);
+    setAccounts(cust.accounts);
     setAccountType('saving');
   };
 
@@ -55,6 +65,18 @@ const CustomerProfile = () => {
 
           <h2>Hello {customer.customer.name}!</h2>
           <div>{customer.email}</div>
+          <div className="small-margin-top">
+            <div className="imageTile">
+              {customer.customer.profilePic
+                ? <img src={fileUrl(customer.customer.profilePic)} alt="profile pic" height="200px" width="150px" />
+                : <div>No pic uploaded</div>}
+            </div>
+            <div className="small-margin-top">
+              <FileUpload singleFile onUpload={handleOnImageUpload} />
+            </div>
+          </div>
+
+          <hr />
           <div>You have {customer.accounts.length} account(s)</div>
 
           <hr />

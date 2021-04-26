@@ -4,6 +4,7 @@ import {
 
 export const signupCustomer = (d) => post('customer', d);
 export const currentCustomer = () => get('customer');
+export const updateCustomer = (d) => put('updateCustomer', d);
 export const loginCustomer = (d) => post('loginCustomer', d);
 export const loginAdmin = (d) => post('loginAdmin', d);
 export const addAccount = (d) => post('addAccount', d);
