@@ -26,11 +26,15 @@ const CustomerProfile = () => {
   };
 
   const handleOnAccountRequest = async () => {
-    await addAccount({ accountType, files: filesUploaded });
+    if (filesUploaded.length === 0) {
+      alert('Upload atleast one document to request new account');
+    } else {
+      await addAccount({ accountType, files: filesUploaded });
+      setFilesUploaded([]);
+      alert('Your request for a new account has been sent.');
+    }
     setCustomer(await currentCustomer());
-    setFilesUploaded([]);
     setAccountType('saving');
-    alert('Your request for a new account has been sent.');
   };
 
   return (
