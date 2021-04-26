@@ -32,26 +32,28 @@ const CustomerTransact = () => {
       {customer ? (
         <>
           <h2>Transact between accounts</h2>
-          <div className="flex">
-            <div>
-              <span>From&nbsp;&nbsp;</span>
+          <div className="flex-column">
+            <div className="medium-margin-top flex">
+              <div className="fixed-width-tags medium-margin-right bolder-text">From&nbsp;&nbsp;</div>
               <select ref={fromRef}>
                 {customer.accounts.filter((a) => a.isActive).map((a) => {
                   return <option key={a._id} value={a._id}>{a._id} (${a.balance})</option>;
                 })}
               </select>
             </div>
-            <div>
-                            &nbsp;&nbsp;
-              <span>to&nbsp;&nbsp;</span>
+            <div className="medium-margin-top flex">
+              <div className="fixed-width-tags medium-margin-right bolder-text">To&nbsp;&nbsp;</div>
               <select ref={toRef}>
                 {customer.accounts.filter((a) => a.isActive).map((a) => {
                   return <option key={a._id} value={a._id}>{a._id} (${a.balance})</option>;
                 })}
               </select>
             </div>
-            <input type="number" ref={amountRef} placeholder="Amount" className="small-margin-left" />
-            <button className="small-margin-left" onClick={handleOnTransfer}>Transfer</button>
+            <div className="medium-margin-top flex">
+              <div className="fixed-width-tags medium-margin-right bolder-text">Amount&nbsp;&nbsp;</div>
+              <input type="number" ref={amountRef} placeholder="Amount" />
+            </div>
+            <div><button className="large-margin-top button large-margin-left  fixed-width-tags" onClick={handleOnTransfer}>Transfer</button></div>
           </div>
         </>
       ) : 'Loading your profile'}
