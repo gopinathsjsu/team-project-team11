@@ -17,6 +17,12 @@ body {
     display: flex;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+
+}
+
 .flex-align-center {
     align-items: center;
 }
@@ -72,8 +78,19 @@ h2 {
     margin-left: 10px;
 }
 
+.large-margin-left {
+    margin-left: 36px;
+}
+
 .medium-margin-top {
     margin-top: 20px;
+}
+
+.large-margin-top {
+    margin-top: 36px;
+}
+.medium-margin-right {
+    margin-right: 20px;
 }
 
 input[type="text"], input[type="password"] {
@@ -168,4 +185,12 @@ hr {
 
 .border-bottom {
     border-bottom: 1px solid black;
+}
+
+.fixed-width-tags {
+    width: 125px;
+}
+
+.bolder-text {
+    font-weight:800;
 }
