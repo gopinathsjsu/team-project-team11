@@ -6,6 +6,7 @@ const CustomerTransact = () => {
   const amountRef = useRef(null);
   const fromRef = useRef(null);
   const toRef = useRef(null);
+  const [isExternalTransfer, setIsExternalTransfer] = useState(false);
 
   const handleOnTransfer = async () => {
     const from = fromRef.current.value;
@@ -34,6 +35,12 @@ const CustomerTransact = () => {
           <h2>Transact between accounts</h2>
           <div className="flex-column">
             <div className="medium-margin-top flex">
+              <div className="fixed-width-tags medium-margin-right bolder-text">Is this an exteral transfer?&nbsp;&nbsp;</div>
+              <input type="checkbox" value={isExternalTransfer} onClick={(event) => {
+                setIsExternalTransfer(!isExternalTransfer);
+              }} />
+            </div>
+            <div className="medium-margin-top flex">
               <div className="fixed-width-tags medium-margin-right bolder-text">From&nbsp;&nbsp;</div>
               <select ref={fromRef}>
                 {customer.accounts.filter((a) => a.isActive).map((a) => {
@@ -43,11 +50,15 @@ const CustomerTransact = () => {
             </div>
             <div className="medium-margin-top flex">
               <div className="fixed-width-tags medium-margin-right bolder-text">To&nbsp;&nbsp;</div>
-              <select ref={toRef}>
-                {customer.accounts.filter((a) => a.isActive).map((a) => {
-                  return <option key={a._id} value={a._id}>{a._id} (${a.balance})</option>;
-                })}
-              </select>
+              {isExternalTransfer ? (
+                <input type="text" ref={toRef} placeholder="Account Number" />)
+                : (
+                  <select ref={toRef}>
+                    {customer.accounts.filter((a) => a.isActive).map((a) => {
+                      return <option key={a._id} value={a._id}>{a._id} (${a.balance})</option>;
+                    })}
+                  </select>
+                )}
             </div>
             <div className="medium-margin-top flex">
               <div className="fixed-width-tags medium-margin-right bolder-text">Amount&nbsp;&nbsp;</div>
