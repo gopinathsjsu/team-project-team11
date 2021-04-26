@@ -6,6 +6,7 @@ const CustomerProfile = () => {
   const [accountType, setAccountType] = useState('saving');
   const [customer, setCustomer] = useState(null);
   const [filesUploaded, setFilesUploaded] = useState([]);
+  const [accounts, setAccounts] = useState([]);
 
   const handleOnFileUpload = (f) => {
     setFilesUploaded(f.files);
@@ -13,7 +14,9 @@ const CustomerProfile = () => {
 
   useEffect(() => {
     (async () => {
-      setCustomer(await currentCustomer());
+      const currCustomer = await currentCustomer();
+      setCustomer(currCustomer);
+      setAccounts(currCustomer.accounts);
     })();
   }, []);
 
@@ -23,6 +26,14 @@ const CustomerProfile = () => {
 
   const handleCheckingAccountChange = () => {
     setAccountType('checking');
+  };
+
+  const handleSelect = (e) => {
+    if (e.target.value === 'all') {
+      setAccounts(customer.accounts);
+    } else {
+      setAccounts(customer.accounts.filter((account) => account.accountType === e.target.value));
+    }
   };
 
   const handleOnAccountRequest = async () => {
@@ -48,6 +59,12 @@ const CustomerProfile = () => {
 
           <hr />
 
+          <select defaultValue="all" onChange={handleSelect}>
+            <option value="all">All</option>
+            <option value="checking">Checking</option>
+            <option value="saving">Savings</option>
+          </select>
+
           <table className="table">
             <thead>
               <tr>
@@ -58,7 +75,7 @@ const CustomerProfile = () => {
               </tr>
             </thead>
             <tbody>
-              {customer.accounts.map((a) => {
+              {accounts.map((a) => {
                 return (
                   <tr key={a._id}>
                     <td>{a._id}</td>
