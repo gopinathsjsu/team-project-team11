@@ -15,7 +15,6 @@ const AccountRequests = () => {
   }, []);
 
   const approveRequest = async (account) => {
-    console.log(account);
     const initialBalance = prompt('Enter initial balance', 0);
     const balance = parseInt(initialBalance);
     if (Number.isNaN(balance)) {
