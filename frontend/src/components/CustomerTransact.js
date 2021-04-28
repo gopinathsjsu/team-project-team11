@@ -39,7 +39,7 @@ const CustomerTransact = () => {
 
   const loadCustomerTransactionPage = () => {
     if (customer) {
-      return customer.accounts.filter((a) => a.isActive) > 0
+      return customer.accounts.filter((a) => a.isActive).length > 0
         ? (
           <div>
             <h2>Transact between accounts</h2>
