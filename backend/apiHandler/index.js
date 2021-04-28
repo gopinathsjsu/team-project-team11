@@ -55,6 +55,12 @@ module.exports = {
             });
         }
     },
+    updateCustomer: async (req, res) => {
+            const customer = await Customer.findById(req.session.user._id);
+            Object.assign(customer, req.body);
+            const cust = await customer.save();
+            res.json(cust);
+    },
     loginAdmin: async (req, res) => {
         const pwd = "admin"
         const eml = "admin@unitedbank.com"
@@ -87,9 +93,9 @@ module.exports = {
         res.sendFile(path.join(__dirname, '../uploads', fileId));
     },
     addAccount: async (req, res) => {
-        const {accountType, files, type} = req.body;
+        const {accountType, files} = req.body;
         const customer = req.session.user._id;
-        const account = new Account({customer, accountType, files, type});
+        const account = new Account({customer, accountType, files});
         return res.json(await account.save());
     },
     getAccountRequests: async (req, res) => {
