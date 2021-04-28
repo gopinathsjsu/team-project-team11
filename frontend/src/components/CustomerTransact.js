@@ -16,6 +16,15 @@ const CustomerTransact = () => {
       alert('Cannot transfer between same accounts');
       return;
     }
+    if (amount === '') {
+      alert('Amount cant be empty');
+      return;
+    }
+
+    if (isExternalTransfer && to === '') {
+      alert('Payee account number cant be empty');
+      return;
+    }
     await transferAmount({ from, to, amount });
     setCustomer(await currentCustomer());
     alert(`$${amount} transferred`);
