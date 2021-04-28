@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { DataGrid, GridColDef, GridCellParams, GridToolbar } from '@material-ui/data-grid';
-import { map } from "lodash"
+import { DataGrid, GridToolbar } from '@material-ui/data-grid';
 import {
-  approveAccountRequest, fileUrl, getAccountRequests, getAccounts,
+  approveAccountRequest, getAccountRequests,
 } from '../util/fetch/api';
 
 const AccountRequests = () => {
@@ -25,7 +24,7 @@ const AccountRequests = () => {
       alert('Account request has been approved');
     }
   };
-  const columns: GridColDef[] = [
+  const columns = [
     { field: 'id', headerName: 'Account ID', flex: 7.5 },
     { field: 'balance', headerName: 'Balance', flex: 5 },
     { field: 'type', headerName: 'Account Type', flex: 5 },
@@ -35,8 +34,8 @@ const AccountRequests = () => {
       field: 'action',
       headerName: 'Action',
       flex: 5,
-      renderCell: (params: GridCellParams) => (
-        <button style={{ marginLeft: 16, color: 'blue' }}
+      renderCell: (params) => (
+        <button className="small-margin-left"
           onClick={(acc) => { approveRequest(params.value); }}
         >
           Approve
@@ -44,7 +43,6 @@ const AccountRequests = () => {
       ),
     },
   ];
-  console.log(accountRequests);
   return (
     <div className="body" style={{ height: 650, width: '100%' }}>
       <h2>Account requests</h2>
@@ -54,15 +52,15 @@ const AccountRequests = () => {
         }}
         columns={columns}
         pageSize={9}
-        rows={map(accountRequests, account => {
+        rows={accountRequests.map((account) => {
           return {
             id: account._id,
             balance: account.balance,
             type: account.type,
             name: account.customer.name,
             email: account.customer.email,
-            action: account
-          }
+            action: account,
+          };
         })}
       />
 
