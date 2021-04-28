@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const {err} = require('../util');
 const multer = require('multer');
 const path = require("path");
+var mongoose = require('mongoose');
+
 const saltRounds = 10;
 const expiresIn = 1008000;
 
@@ -115,10 +117,15 @@ module.exports = {
         let {from, to, amount} = req.body;
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
+        if(!mongoose.Types.ObjectId.isValid(to))
+            return res.status(401).json(err(`Payee Account Number is invalid`));
         const toAccount = await Account.findById(to);
         const customer = req.session.user._id;
         if (fromAccount.customer.toString() !== customer) {
             return res.status(401).json(err(`This account does not belong to you`));
+        }
+        if (!toAccount) {
+            return res.status(401).json(err(`Payee account number does not exist`));
         }
         if (fromAccount.balance < amount) {
             return res.status(400).json(err(`In-sufficient balance in ${from}`));
@@ -150,9 +157,15 @@ module.exports = {
     },
     getTransactions: async (req, res) => {
         const customer = req.session.user._id
-        const transaction = await Transactions.find({customer})
-            .populate('from')
-            .populate('to');
-        return res.json(transaction);
+        const accounts = (await Account.find({customer})).map((account) => account._id);
+
+        const transactions = await Transactions.find(
+                { $or: [{
+                    from : { $in : accounts }
+                }, {to : { $in : accounts}}] },
+        ).populate('from')
+        .populate('to');
+        
+        return res.json(transactions);
     }
 };
