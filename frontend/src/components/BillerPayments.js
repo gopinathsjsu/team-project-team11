@@ -30,7 +30,7 @@ const BillerPayments = () => {
 
   const loadCustomerTransactionPage = () => {
     if (customer) {
-      return customer.accounts.length > 0
+      return customer.accounts.filter((a) => a.isActive).length > 0
         ? (
           <div>
             <h2>Transfer to external accounts</h2>
