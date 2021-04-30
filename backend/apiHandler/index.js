@@ -181,5 +181,19 @@ module.exports = {
         .populate('to');
         
         return res.json(transactions);
+    },
+    
+    getScheduledTransactions: async (req, res) => {
+        const customer = req.session.user._id
+        const accounts = (await Account.find({customer})).map((account) => account._id);
+
+        const transactions = await Transactions.find(
+                { $and: [{
+                    from : { $in : accounts }
+                }, {isRecurringPayment : true}] },
+        ).populate('from')
+        .populate('to');
+        
+        return res.json(transactions);
     }
 };
