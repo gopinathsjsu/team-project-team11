@@ -15,7 +15,6 @@ export const transferAmount = (d) => post('transferAmount', d);
 export const transferExternalAmount = (d) => post('transferExternalAmount', d);
 export const getAccounts = () => get('accounts');
 export const getTransactions = () => get('transactions');
-export const getScheduledTransactions = () => get('scheduled-transactions');
 
 export const fileUrl = (fileId) => {
   return `${apiUrl}/file/${fileId}`;
