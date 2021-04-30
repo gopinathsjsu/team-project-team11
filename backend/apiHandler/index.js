@@ -120,7 +120,7 @@ module.exports = {
         return res.json(await account.save());
     },
     transferAmount: async (req, res) => {
-        let {from, to, amount} = req.body;
+        let {from, to, amount, frequency} = req.body;
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
         if(!mongoose.Types.ObjectId.isValid(to))
@@ -136,8 +136,16 @@ module.exports = {
         if (fromAccount.balance < amount) {
             return res.status(400).json(err(`In-sufficient balance in ${from}`));
         }
-        const transaction = new Transactions({from, to, amount, customer});
+
+        const { isRecurringPayment } = req.body;
+
+        let transaction = null;
+        if(isRecurringPayment) 
+            transaction = new Transactions({from, to, amount, customer, isRecurringPayment, frequency, startDate: Date.now(), lastTransactionDate : Date.now()});
+        else 
+            transaction = new Transactions({from, to, amount, customer});
         await transaction.save();
+
         fromAccount.balance -= amount;
         toAccount.balance += amount;
         await fromAccount.save();
@@ -169,6 +177,20 @@ module.exports = {
                 { $or: [{
                     from : { $in : accounts }
                 }, {to : { $in : accounts}}] },
+        ).populate('from')
+        .populate('to');
+        
+        return res.json(transactions);
+    },
+    
+    getScheduledTransactions: async (req, res) => {
+        const customer = req.session.user._id
+        const accounts = (await Account.find({customer})).map((account) => account._id);
+
+        const transactions = await Transactions.find(
+                { $and: [{
+                    from : { $in : accounts }
+                }, {isRecurringPayment : true}] },
         ).populate('from')
         .populate('to');
         

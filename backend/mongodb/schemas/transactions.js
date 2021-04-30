@@ -5,7 +5,12 @@ module.exports = (mongoose) => {
             customer: {type: mongoose.Schema.Types.ObjectId, ref: 'customer', required: true},
             amount: {type: Number, default: 0},
             isExternal: {type: Boolean, default: false},
-            toExternal: {type: String, default: null}
+            toExternal: {type: String, default: null},
+            frequency: {type: String, default: null},
+            isRecurringPayment: {type: Boolean, default: false},
+            startDate: {type: Date, default: null},
+            endDate: {type : Date, default: null},
+            lastTransactionDate: {type: Date, default: null}
         },
         {
             timestamps: true,

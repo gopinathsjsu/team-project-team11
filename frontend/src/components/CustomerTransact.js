@@ -6,12 +6,16 @@ const CustomerTransact = () => {
   const amountRef = useRef(null);
   const fromRef = useRef(null);
   const toRef = useRef(null);
+  const frequencyRef = useRef(null);
   const [isExternalTransfer, setIsExternalTransfer] = useState(false);
+  const [isRecurringPayment, setIsRecurringPayment] = useState(false);
 
   const handleOnTransfer = async () => {
     const from = fromRef.current.value;
     const to = toRef.current.value;
     const amount = amountRef.current.value;
+
+    const frequency = frequencyRef && frequencyRef.current ? frequencyRef.current.value : null;
     if (from === to) {
       alert('Cannot transfer between same accounts');
       return;
@@ -25,7 +29,9 @@ const CustomerTransact = () => {
       alert('Payee account number cant be empty');
       return;
     }
-    await transferAmount({ from, to, amount });
+    await transferAmount({
+      from, to, amount, isRecurringPayment, frequency,
+    });
     setCustomer(await currentCustomer());
     alert(`$${amount} transferred`);
     amountRef.current.value = '';
@@ -74,6 +80,23 @@ const CustomerTransact = () => {
                 <div className="fixed-width-tags medium-margin-right bolder-text">Amount&nbsp;&nbsp;</div>
                 <input type="number" ref={amountRef} placeholder="Amount" />
               </div>
+
+              <div className="medium-margin-top flex">
+                <div className="fixed-width-tags medium-margin-right bolder-text">Do you want to repeat this transaction?&nbsp;&nbsp;</div>
+                <input type="checkbox" value={isRecurringPayment} onClick={(event) => {
+                  setIsRecurringPayment(!isRecurringPayment);
+                }} />
+              </div>
+
+              {isRecurringPayment ? (
+                <div className="medium-margin-top flex">
+                  <div className="fixed-width-tags medium-margin-right bolder-text">Select frequency&nbsp;&nbsp;</div>
+                  <select ref={frequencyRef}>
+                    <option key="W" value="W">Weekly</option>;
+                    <option key="M" value="M">Monthly</option>;
+                  </select>
+                </div>
+              ) : null}
               <div><button className="large-margin-top button large-margin-left  fixed-width-tags" onClick={handleOnTransfer}>Transfer</button></div>
             </div>
           </div>
