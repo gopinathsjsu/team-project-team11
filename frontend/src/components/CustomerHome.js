@@ -4,6 +4,7 @@ import CustomerProfile from './CustomerProfile';
 import CustomerTransactions from './CustomerTransactions';
 import CustomerTransact from './CustomerTransact';
 import BillerPayments from './BillerPayments';
+import RecurringTransactions from './RecurringTransactions';
 
 const CustomerHome = ({ history }) => {
   const r = window.appRoutes;
@@ -18,6 +19,8 @@ const CustomerHome = ({ history }) => {
     [r.customerTransactions, <CustomerTransactions />, true],
     [r.customerTransact, <CustomerTransact />, true],
     [r.billerPayments, <BillerPayments />, true],
+    [r.customerRecurringTransactions, <RecurringTransactions />, true],
+
   ];
 
   return (
@@ -27,6 +30,7 @@ const CustomerHome = ({ history }) => {
         <Link to={r.customerTransactions}>My Transaction</Link>
         <Link to={r.customerTransact}>Transact</Link>
         <Link to={r.billerPayments}>Biller Payments</Link>
+        <Link to={r.customerRecurringTransactions}>Scheduled Transactions</Link>
         <button className="button no-margin-top" onClick={onLogout}>Logout</button>
       </div>
       <div>
