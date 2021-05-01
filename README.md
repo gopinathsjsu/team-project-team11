@@ -66,7 +66,7 @@ https://faun.pub/learning-kubernetes-on-eks-by-doing-part-4-ingress-on-eks-6c5e5
 # to start React frontend
 
 # start frontend
-cd frontend && npm install && REACT_APP_API_URL=http://localhost:5000 npm start
+cd frontend && npm install && export REACT_APP_API_URL=http://localhost:5000 && npm start
 
 # please configure your mongodb connection string in backend/.env
 
