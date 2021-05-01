@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { DataGrid, GridToolbar } from '@material-ui/data-grid';
+import CustomNoRowsOverlay from './Overlay';
 import {
-  approveAccountRequest, getAccountRequests,
+  approveAccountRequest,
+  getAccountRequests,
 } from '../util/fetch/api';
 
 const AccountRequests = () => {
   const [accountRequests, setAccountRequests] = useState([]);
-
   useEffect(() => {
-    (async () => {
-      setAccountRequests(await getAccountRequests());
-    })();
+    (
+      async () => {
+        setAccountRequests(await getAccountRequests());
+      }
+    )();
   }, []);
 
   const approveRequest = async (account) => {
@@ -24,6 +27,7 @@ const AccountRequests = () => {
       alert('Account request has been approved');
     }
   };
+
   const columns = [
     { field: 'id', headerName: 'Account ID', flex: 7.5 },
     { field: 'balance', headerName: 'Balance', flex: 5 },
@@ -36,32 +40,34 @@ const AccountRequests = () => {
       flex: 5,
       renderCell: (params) => (
         <button className="small-margin-left"
-          onClick={(acc) => { approveRequest(params.value); }}
+          onClick={() => { approveRequest(params.value); }}
         >
           Approve
         </button>
       ),
     },
   ];
+
   return (
     <div className="body" style={{ height: 650, width: '100%' }}>
       <h2>Account requests</h2>
       <DataGrid
-        components={{
-          Toolbar: GridToolbar,
-        }}
-        columns={columns}
         pageSize={9}
+        columns={columns}
         rows={accountRequests.map((account) => {
           return {
             id: account._id,
             balance: account.balance,
-            type: account.type,
+            type: account.accountType,
             name: account.customer.name,
             email: account.customer.email,
             action: account,
           };
         })}
+        components={{
+          Toolbar: GridToolbar,
+          NoRowsOverlay: CustomNoRowsOverlay,
+        }}
       />
 
     </div>
