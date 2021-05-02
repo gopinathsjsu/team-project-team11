@@ -49,6 +49,7 @@ app.use((req,
     ['post', 'transferAmount', handler.transferAmount, 'customer'],
     ['post', 'transferExternalAmount', handler.transferExternalAmount, 'customer'],
     ['get', 'transactions', handler.getTransactions, 'customer'],
+    ['get', 'scheduled-transactions', handler.getScheduledTransactions, 'customer']
 ].forEach((r) => {
     app[r[0]]("/apiV1/" + r[1], async (req, res, next) => {
         if (r[3] !== null && r[3] !== req.session.scope) {
