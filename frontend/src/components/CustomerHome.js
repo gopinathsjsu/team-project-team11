@@ -4,6 +4,7 @@ import CustomerProfile from './CustomerProfile';
 import CustomerTransactions from './CustomerTransactions';
 import CustomerTransact from './CustomerTransact';
 import BillerPayments from './BillerPayments';
+import AccountDetails from './AccountDetails';
 
 const CustomerHome = ({ history }) => {
   const r = window.appRoutes;
@@ -18,6 +19,7 @@ const CustomerHome = ({ history }) => {
     [r.customerTransactions, <CustomerTransactions />, true],
     [r.customerTransact, <CustomerTransact />, true],
     [r.billerPayments, <BillerPayments />, true],
+    [r.accountDetails, <AccountDetails />, true],
   ];
 
   return (
