@@ -1,11 +1,7 @@
 
 # Online Banking System
 
-
-```
 A banking application which exposes API calls to add new accounts, perform transactions and view transaction history.
-```
-
 
 ### Architecture Diagram
 
