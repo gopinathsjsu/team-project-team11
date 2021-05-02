@@ -109,7 +109,7 @@ module.exports = {
         return res.json(account);
     },
     getAccountDetails: async (req, res) => {
-        const account = await Account.findById(req.body.accountId);
+        const account = await Account.findById(req.params.id);
         return res.json(account);
     },
     approveAccountRequest: async (req, res) => {
