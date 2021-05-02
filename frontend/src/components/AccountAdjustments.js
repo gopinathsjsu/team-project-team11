@@ -34,7 +34,7 @@ const AccountAdjustments = () => {
     {
       field: 'balance',
       headerName: 'Balance',
-      flex: 5,
+      flex: 7.5,
       renderCell: (params: GridCellParams) => (
         <input className="form-control" type="number" value={params.value}
           onChange={(e) => { updateBalance(params.value, e.target.value); }} />
