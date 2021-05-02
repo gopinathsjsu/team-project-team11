@@ -32,8 +32,8 @@ kubectl port-forward service/frontend 8006:80
 kubectl delete all --all -n unitedbank && kubectl delete ingress unitedbank
 ```
 
-### Deploy using help
-
+### Deploy using helm
+(Assuming that a cluster is created on AWS)
 ```
 # check template
 helm template -f production.yaml unitedbank ./helm
