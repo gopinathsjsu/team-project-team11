@@ -7,19 +7,24 @@ const BillerPayments = () => {
   const extAmountRef = useRef(null);
   const extFromRef = useRef(null);
   const extToRef = useRef(null);
+  const descriptionRef = useRef(null);
 
   const handleOnExternalTransfer = async () => {
     const from = extFromRef.current.value;
     const amount = extAmountRef.current.value;
     const toExternal = extToRef.current.value;
+    const description = descriptionRef.current.value;
     if (amount === '') {
       alert('Amount cant be empty');
       return;
     }
-    await transferExternalAmount({ toExternal, from, amount });
+    await transferExternalAmount({
+      toExternal, from, amount, description,
+    });
     setCustomer(await currentCustomer());
     alert(`$${amount} transferred`);
     extAmountRef.current.value = '';
+    descriptionRef.current.value = '';
   };
 
   useEffect(() => {
@@ -55,6 +60,10 @@ const BillerPayments = () => {
               <div className="medium-margin-top flex">
                 <div className="fixed-width-tags medium-margin-right bolder-text">Amount&nbsp;&nbsp;</div>
                 <input type="number" ref={extAmountRef} placeholder="Amount" />
+              </div>
+              <div className="medium-margin-top flex">
+                <div className="fixed-width-tags medium-margin-right bolder-text">Description&nbsp;&nbsp;</div>
+                <input type="text" ref={descriptionRef} placeholder="Description" />
               </div>
               <div><button className="large-margin-top button large-margin-left  fixed-width-tags" onClick={handleOnExternalTransfer}>Transfer</button></div>
             </div>
