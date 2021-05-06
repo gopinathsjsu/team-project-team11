@@ -6,6 +6,7 @@ const CustomerTransact = () => {
   const amountRef = useRef(null);
   const fromRef = useRef(null);
   const toRef = useRef(null);
+  const descriptionRef = useRef(null);
   const frequencyRef = useRef(null);
   const [isExternalTransfer, setIsExternalTransfer] = useState(false);
   const [isRecurringPayment, setIsRecurringPayment] = useState(false);
@@ -14,6 +15,7 @@ const CustomerTransact = () => {
     const from = fromRef.current.value;
     const to = toRef.current.value;
     const amount = amountRef.current.value;
+    const description = descriptionRef.current.value;
 
     const frequency = frequencyRef && frequencyRef.current ? frequencyRef.current.value : null;
     if (from === to) {
@@ -30,7 +32,7 @@ const CustomerTransact = () => {
       return;
     }
     await transferAmount({
-      from, to, amount, isRecurringPayment, frequency,
+      from, to, amount, isRecurringPayment, frequency, description,
     });
     setCustomer(await currentCustomer());
     alert(`$${amount} transferred`);
@@ -79,6 +81,11 @@ const CustomerTransact = () => {
               <div className="medium-margin-top flex">
                 <div className="fixed-width-tags medium-margin-right bolder-text">Amount&nbsp;&nbsp;</div>
                 <input type="number" ref={amountRef} placeholder="Amount" />
+              </div>
+
+              <div className="medium-margin-top flex">
+                <div className="fixed-width-tags medium-margin-right bolder-text">Description&nbsp;&nbsp;</div>
+                <input type="text" ref={descriptionRef} placeholder="Description" />
               </div>
 
               <div className="medium-margin-top flex">
