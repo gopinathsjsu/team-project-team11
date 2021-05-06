@@ -22,6 +22,7 @@ const r = {
   billerPayments: '/customerHome/billerPayments',
   accountAdjustments: '/adminHome/accountAdjustments',
   accountRequests: '/adminHome/accountRequests',
+  accountDetails: '/customerHome/accountDetails/:accountId',
 };
 
 window.appRoutes = r;

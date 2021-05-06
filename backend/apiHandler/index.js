@@ -108,6 +108,10 @@ module.exports = {
             .populate('customer');
         return res.json(account);
     },
+    getAccountDetails: async (req, res) => {
+        const account = await Account.findById(req.params.id);
+        return res.json(account);
+    },
     approveAccountRequest: async (req, res) => {
         const account = await Account.findById(req.body._id);
         account.isActive = true;

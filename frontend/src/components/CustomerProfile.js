@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import {
   addAccount, currentCustomer, fileUrl, updateCustomer,
 } from '../util/fetch/api';
@@ -100,7 +101,7 @@ const CustomerProfile = () => {
               {accounts.map((a) => {
                 return (
                   <tr key={a._id}>
-                    <td>{a._id}</td>
+                    <td><Link to={{ pathname: `accountDetails/${a._id}` }}>{a._id}</Link></td>
                     <td>{a.accountType}</td>
                     <td>${a.balance}</td>
                     <td>{a.isActive ? 'Active' : 'Waiting for approval'}</td>
@@ -146,4 +147,4 @@ const CustomerProfile = () => {
   );
 };
 
-export default CustomerProfile;
+export default withRouter(CustomerProfile);

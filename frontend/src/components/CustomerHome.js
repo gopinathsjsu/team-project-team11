@@ -4,6 +4,7 @@ import CustomerProfile from './CustomerProfile';
 import CustomerTransactions from './CustomerTransactions';
 import CustomerTransact from './CustomerTransact';
 import BillerPayments from './BillerPayments';
+import AccountDetails from './AccountDetails';
 import RecurringTransactions from './RecurringTransactions';
 
 const CustomerHome = ({ history }) => {
@@ -19,8 +20,8 @@ const CustomerHome = ({ history }) => {
     [r.customerTransactions, <CustomerTransactions />, true],
     [r.customerTransact, <CustomerTransact />, true],
     [r.billerPayments, <BillerPayments />, true],
+    [r.accountDetails, <AccountDetails />, true],
     [r.customerRecurringTransactions, <RecurringTransactions />, true],
-
   ];
 
   return (
