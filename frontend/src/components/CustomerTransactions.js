@@ -22,6 +22,7 @@ const CustomerTransactions = () => {
               <tr>
                 <td>From Account</td>
                 <td>To Account</td>
+                <td>Description</td>
                 <td>Amount</td>
                 <td>Time</td>
               </tr>
@@ -32,6 +33,7 @@ const CustomerTransactions = () => {
                   <tr key={i}>
                     <td>{t.from._id}</td>
                     <td>{t.isExternal ? t.toExternal : t.to._id}</td>
+                    <td>{t.description}</td>
                     <td>${t.amount}</td>
                     <td>{new Date(t.createdAt).toDateString()}</td>
                   </tr>
