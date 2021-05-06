@@ -37,6 +37,7 @@ const CustomerTransact = () => {
     setCustomer(await currentCustomer());
     alert(`$${amount} transferred`);
     amountRef.current.value = '';
+    descriptionRef.current.value = '';
   };
 
   useEffect(() => {
