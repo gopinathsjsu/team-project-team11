@@ -157,7 +157,7 @@ module.exports = {
         return res.json(amount);
     },
     transferExternalAmount: async (req, res) => {
-        let {from, toExternal, amount} = req.body;
+        let {from, toExternal, amount, description} = req.body;
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
         const customer = req.session.user._id;
@@ -167,7 +167,7 @@ module.exports = {
         if (fromAccount.balance < amount) {
             return res.status(400).json(err(`In-sufficient balance in ${from}`));
         }
-        const transaction = new Transactions({from, toExternal, amount, customer, isExternal: true});
+        const transaction = new Transactions({description, from, toExternal, amount, customer, isExternal: true});
         await transaction.save();
         fromAccount.balance -= amount;
         await fromAccount.save();
