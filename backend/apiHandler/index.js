@@ -124,7 +124,7 @@ module.exports = {
         return res.json(await account.save());
     },
     transferAmount: async (req, res) => {
-        let {from, to, amount, frequency} = req.body;
+        let {from, to, amount, frequency, description} = req.body;
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
         if(!mongoose.Types.ObjectId.isValid(to))
@@ -145,9 +145,9 @@ module.exports = {
 
         let transaction = null;
         if(isRecurringPayment) 
-            transaction = new Transactions({from, to, amount, customer, isRecurringPayment, frequency, startDate: Date.now(), lastTransactionDate : Date.now()});
+            transaction = new Transactions({description, from, to, amount, customer, isRecurringPayment, frequency, startDate: Date.now(), lastTransactionDate : Date.now()});
         else 
-            transaction = new Transactions({from, to, amount, customer});
+            transaction = new Transactions({description, from, to, amount, customer});
         await transaction.save();
 
         fromAccount.balance -= amount;
