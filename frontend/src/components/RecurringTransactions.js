@@ -23,6 +23,7 @@ const RecurringTransactions = () => {
             <tr>
               <td>From</td>
               <td>To</td>
+              <td>Description</td>
               <td>Frequency</td>
               <td>First Transaction</td>
               <td>Last Transaction</td>
@@ -48,6 +49,7 @@ const RecurringTransactions = () => {
                 <tr key={a._id}>
                   <td>{a.from._id}</td>
                   <td>{a.to._id}</td>
+                  <td>{a.description}</td>
                   <td>{a.frequency === 'W' ? 'Weekly' : 'Monthly'}</td>
                   <td>
                     {startDate.getMonth() + 1}/{startDate.getDate()}/{startDate.getFullYear()}</td>
