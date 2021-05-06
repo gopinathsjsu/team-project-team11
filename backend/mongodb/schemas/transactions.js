@@ -10,7 +10,8 @@ module.exports = (mongoose) => {
             isRecurringPayment: {type: Boolean, default: false},
             startDate: {type: Date, default: null},
             endDate: {type : Date, default: null},
-            lastTransactionDate: {type: Date, default: null}
+            lastTransactionDate: {type: Date, default: null},
+            description: {type: String, default: null},
         },
         {
             timestamps: true,
