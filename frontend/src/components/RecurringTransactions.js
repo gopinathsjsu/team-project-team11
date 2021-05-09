@@ -20,6 +20,7 @@ const RecurringTransactions = () => {
           <tr>
             <td>Amount</td>
             <td>To</td>
+            <td>Is external</td>
             <td>Description</td>
             <td>Frequency</td>
             <td>Start date</td>
@@ -36,7 +37,8 @@ const RecurringTransactions = () => {
             return (
               <tr key={t._id}>
                 <td>${t.amount}</td>
-                <td>{t.toExternal}</td>
+                <td>{t.isExternal ? t.toExternal : t.to._id }</td>
+                <td>{t.isExternal ? 'Yes' : 'No'}</td>
                 <td>{t.description}</td>
                 <td>{t.frequency}</td>
                 <td>{(new Date(t.startDate).toDateString())}</td>

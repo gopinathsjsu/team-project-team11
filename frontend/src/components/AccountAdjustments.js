@@ -24,6 +24,7 @@ const AccountAdjustments = () => {
   const saveBalance = async (account) => {
     await updateAccountBalance({ _id: account._id, balance: account.balance });
     setAccounts(await getAccounts());
+    window.message('Balance updated');
   };
 
   const closeAccount = async (account) => {
@@ -36,7 +37,7 @@ const AccountAdjustments = () => {
 
   return (
     <div className="body">
-      <h2>Customer accounts</h2>
+      <h2>Adjust customer accounts balance</h2>
       <div>
         <div>{accounts.length === 0 && 'No accounts to show'}</div>
         <table className="table">
