@@ -84,6 +84,7 @@ const CustomerProfile = () => {
           </div>
 
           <hr />
+
           <div>You have {customer.accounts.length} account(s)</div>
 
           <hr />
@@ -122,8 +123,9 @@ const CustomerProfile = () => {
           <div className="small-margin-top">
             <h4 className="small-margin-top">Open a new account</h4>
             <div>
-              <div className="small-margin-top">Account Type</div>
+              <div className="small-margin-top"></div>
               <div className="small-margin-top">
+                <i>Account Type</i>&nbsp;&nbsp;
                 Savings
                 &nbsp;&nbsp;
                 <input type="radio" checked={accountType === 'saving'}
