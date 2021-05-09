@@ -73,12 +73,12 @@ const AccountAdjustments = () => {
                     <td>{account.customer.name}</td>
                     <td>{account.customer.email}</td>
                     <td>
-                      <button onClick={() => { saveBalance(account); }} className="button">
+                      <button onClick={() => { saveBalance(account); }} className="button no-margin-top">
                         Update
                       </button>
                     </td>
                     <td>
-                      <button onClick={() => { closeAccount(account); }} className="button">
+                      <button onClick={() => { closeAccount(account); }} className="button no-margin-top">
                         Close
                       </button>
                     </td>
