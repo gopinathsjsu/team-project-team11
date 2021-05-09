@@ -13,6 +13,14 @@ body {
     margin: auto;
 }
 
+.landing-block {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-right: 1px solid grey;
+}
+.landing-block:last-child{
+    border-right: none;
+}
 .flex {
     display: flex;
 }
