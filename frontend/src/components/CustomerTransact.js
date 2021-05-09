@@ -109,8 +109,9 @@ const CustomerTransact = () => {
             </div>
           </div>
         ) : (
-          <h2>You dont have any account added yet.
-            Please request for an account to use this feature</h2>
+          <div className="center">
+            You dont have an active bank account yet.
+          </div>
         );
     }
     return 'Loading your profile';
