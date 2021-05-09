@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAccounts, updateAccountBalance } from '../util/fetch/api';
+import { deleteAccount, getAccounts, updateAccountBalance } from '../util/fetch/api';
 
 const AccountAdjustments = () => {
   const [accounts, setAccounts] = useState([]);
@@ -23,7 +23,15 @@ const AccountAdjustments = () => {
 
   const saveBalance = async (account) => {
     await updateAccountBalance({ _id: account._id, balance: account.balance });
-    alert(`Updated balance to ${account.balance}`);
+    setAccounts(await getAccounts());
+  };
+
+  const closeAccount = async (account) => {
+    if (window.confirm(`Are you sure you want to close the account ${account._id}`)) {
+      await deleteAccount(account._id);
+      alert(`Account ${account._id} was delete`);
+      setAccounts(await getAccounts());
+    }
   };
 
   return (
@@ -39,6 +47,7 @@ const AccountAdjustments = () => {
               <td>Account Type</td>
               <td>Customer Name</td>
               <td>Customer Email</td>
+              <td>&nbsp;</td>
               <td>&nbsp;</td>
             </tr>
           </thead>
@@ -63,7 +72,12 @@ const AccountAdjustments = () => {
                   <td>{account.customer.email}</td>
                   <td>
                     <button onClick={() => { saveBalance(account); }} className="button">
-                      Update balance
+                      Update
+                    </button>
+                  </td>
+                  <td>
+                    <button onClick={() => { closeAccount(account); }} className="button">
+                      Close
                     </button>
                   </td>
                 </tr>

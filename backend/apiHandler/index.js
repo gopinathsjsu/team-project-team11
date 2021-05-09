@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const {err} = require('../util');
 const multer = require('multer');
 const path = require("path");
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const saltRounds = 10;
 const expiresIn = 1008000;
@@ -97,6 +97,10 @@ module.exports = {
         const customer = req.session.user._id;
         const account = new Account({customer, accountType, files});
         return res.json(await account.save());
+    },
+    deleteAccount: async (req, res) => {
+        const id = req.params.id;
+        return res.json(await Account.findByIdAndDelete(id));
     },
     getAccountRequests: async (req, res) => {
         const account = await Account.find({isActive: false})

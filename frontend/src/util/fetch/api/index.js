@@ -12,6 +12,7 @@ export const getAccountRequests = () => get('accountRequests');
 export const getAccountDetails = (d) => get(`accountDetails/${d}`);
 export const approveAccountRequest = (d) => post('approveAccountRequest', d);
 export const updateAccountBalance = (d) => post('accountBalance', d);
+export const deleteAccount = (id) => destroy(`account/${id}`);
 export const transferAmount = (d) => post('transferAmount', d);
 export const transferExternalAmount = (d) => post('transferExternalAmount', d);
 export const getAccounts = () => get('accounts');
