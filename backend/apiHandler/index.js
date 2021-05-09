@@ -56,10 +56,10 @@ module.exports = {
         }
     },
     updateCustomer: async (req, res) => {
-            const customer = await Customer.findById(req.session.user._id);
-            Object.assign(customer, req.body);
-            const cust = await customer.save();
-            res.json(cust);
+        const customer = await Customer.findById(req.session.user._id);
+        Object.assign(customer, req.body);
+        const cust = await customer.save();
+        res.json(cust);
     },
     loginAdmin: async (req, res) => {
         const pwd = "admin"
@@ -131,7 +131,7 @@ module.exports = {
         let {from, to, amount, frequency, description} = req.body;
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
-        if(!mongoose.Types.ObjectId.isValid(to))
+        if (!mongoose.Types.ObjectId.isValid(to))
             return res.status(400).json(err(`Payee Account Number is invalid`));
         const toAccount = await Account.findById(to);
         const customer = req.session.user._id;
@@ -145,14 +145,9 @@ module.exports = {
             return res.status(400).json(err(`In-sufficient balance in ${from}`));
         }
 
-        const { isRecurringPayment } = req.body;
+        let transaction = {description, from, to, amount, customer};
 
-        let transaction = null;
-        if(isRecurringPayment) 
-            transaction = new Transactions({description, from, to, amount, customer, isRecurringPayment, frequency, startDate: Date.now(), lastTransactionDate : Date.now()});
-        else 
-            transaction = new Transactions({description, from, to, amount, customer});
-        await transaction.save();
+        await new Transactions(transaction).save();
 
         fromAccount.balance -= amount;
         toAccount.balance += amount;
@@ -161,7 +156,7 @@ module.exports = {
         return res.json(amount);
     },
     transferExternalAmount: async (req, res) => {
-        let {from, toExternal, amount, description} = req.body;
+        let {from, toExternal, amount, description, isRecurringPayment, frequency, startDate, endDate} = req.body;
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
         const customer = req.session.user._id;
@@ -171,8 +166,12 @@ module.exports = {
         if (fromAccount.balance < amount) {
             return res.status(400).json(err(`In-sufficient balance in ${from}`));
         }
-        const transaction = new Transactions({description, from, toExternal, amount, customer, isExternal: true});
-        await transaction.save();
+        let transaction = {description, from, toExternal, amount, customer, isExternal: true};
+        if (isRecurringPayment)
+            transaction = {...transaction, isRecurringPayment, frequency, startDate, endDate}
+
+        const t = new Transactions(transaction);
+        await t.save();
         fromAccount.balance -= amount;
         await fromAccount.save();
         return res.json(amount);
@@ -180,28 +179,23 @@ module.exports = {
     getTransactions: async (req, res) => {
         const customer = req.session.user._id
         const accounts = (await Account.find({customer})).map((account) => account._id);
-
         const transactions = await Transactions.find(
-                { $or: [{
-                    from : { $in : accounts }
-                }, {to : { $in : accounts}}] },
-        ).populate('from')
-        .populate('to');
-        
+            {$or: [{from: {$in: accounts}}, {to: {$in: accounts}}]})
+            .populate('from')
+            .populate('to');
+
         return res.json(transactions);
     },
-    
+
     getScheduledTransactions: async (req, res) => {
         const customer = req.session.user._id
         const accounts = (await Account.find({customer})).map((account) => account._id);
-
+        console.log(accounts);
         const transactions = await Transactions.find(
-                { $and: [{
-                    from : { $in : accounts }
-                }, {isRecurringPayment : true}] },
-        ).populate('from')
-        .populate('to');
-        
+            {$and: [{from: {$in: accounts}}, {isRecurringPayment: true}]})
+            .populate('from')
+            .populate('to');
+
         return res.json(transactions);
     }
 };
