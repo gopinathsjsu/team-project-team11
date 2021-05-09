@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {
-  DataGrid, GridCellParams, GridToolbar,
-} from '@material-ui/data-grid';
 import { getAccounts, updateAccountBalance } from '../util/fetch/api';
 
 const AccountAdjustments = () => {
@@ -29,51 +26,52 @@ const AccountAdjustments = () => {
     alert(`Updated balance to ${account.balance}`);
   };
 
-  const columns = [
-    { field: 'id', headerName: 'Account ID', flex: 7.5 },
-    {
-      field: 'balance',
-      headerName: 'Balance',
-      flex: 7.5,
-      renderCell: (params: GridCellParams) => (
-        <input className="form-control" type="number" value={params.value}
-          onChange={(e) => { updateBalance(params.value, e.target.value); }} />
-      ),
-    },
-    { field: 'type', headerName: 'Account Type', flex: 7.5 },
-    { field: 'name', headerName: 'Customer Name', flex: 7.5 },
-    { field: 'email', headerName: 'Customer Email', flex: 7.5 },
-    {
-      field: 'action',
-      headerName: 'Action',
-      flex: 5,
-      renderCell: (params: GridCellParams) => (
-        <button className="btn button">Update balance</button>
-      ),
-    },
-  ];
-
   return (
-
-    <div className="body" style={{ height: 650, width: '100%' }}>
-      <h2>Customer Account</h2>
-      <DataGrid
-        components={{
-          Toolbar: GridToolbar,
-        }}
-        columns={columns}
-        pageSize={9}
-        rows={accounts.map((account) => {
-          return {
-            id: account._id,
-            balance: account.balance,
-            type: account.accountType,
-            name: account.customer.name,
-            email: account.customer.email,
-            action: account,
-          };
-        })}
-      />
+    <div className="body">
+      <h2>Customer accounts</h2>
+      <div>
+        <div>{accounts.length === 0 && 'No accounts to show'}</div>
+        <table className="table">
+          <thead>
+            <tr>
+              <td>Account ID</td>
+              <td>Balance</td>
+              <td>Account Type</td>
+              <td>Customer Name</td>
+              <td>Customer Email</td>
+              <td>&nbsp;</td>
+            </tr>
+          </thead>
+          <tbody>
+            {accounts.length === 0
+            && (
+            <tr>
+              <td className="center" colSpan="6">No accounts to show</td>
+            </tr>
+            )}
+            {accounts.map((account) => {
+              return (
+                <tr key={account._id}>
+                  <td>{account._id}</td>
+                  <td>
+                    <input type="number" value={account.balance} onChange={(e) => {
+                      updateBalance(account, e.target.value);
+                    }} />
+                  </td>
+                  <td>{account.accountType}</td>
+                  <td>{account.customer.name}</td>
+                  <td>{account.customer.email}</td>
+                  <td>
+                    <button onClick={() => { saveBalance(account); }} className="button">
+                      Update balance
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
