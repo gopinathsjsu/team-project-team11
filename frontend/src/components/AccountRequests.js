@@ -49,14 +49,14 @@ const AccountRequests = () => {
                     <td>{account.customer.name}</td>
                     <td>{account.customer.email}</td>
                     <td>
-                      <button onClick={(acc) => { approveRequest(account); }}>
+                      <button onClick={(acc) => { approveRequest(account); }} className="button">
                         Approve
                       </button>
                     </td>
                   </tr>
-                  <tr className="border-bottom">
+                  <tr>
                     <td colSpan={6}>
-                      <div className="uploaded-file medium-margin-top">
+                      <div className="uploaded-file">
                         {account.files.map((f) => {
                           return <img key={f} src={fileUrl(f)} alt={fileUrl(f)} />;
                         })}
