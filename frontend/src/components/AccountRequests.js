@@ -42,7 +42,7 @@ const AccountRequests = () => {
             {accountRequests.map((account) => {
               return (
                 <>
-                  <tr>
+                  <tr key={account._id}>
                     <td>{account._id}</td>
                     <td>${account.balance}</td>
                     <td>{account.accountType}</td>

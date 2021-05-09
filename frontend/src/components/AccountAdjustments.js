@@ -58,31 +58,33 @@ const AccountAdjustments = () => {
               <td className="center" colSpan="6">No accounts to show</td>
             </tr>
             )}
-            {accounts.map((account) => {
-              return (
-                <tr key={account._id}>
-                  <td>{account._id}</td>
-                  <td>
-                    <input type="number" value={account.balance} onChange={(e) => {
-                      updateBalance(account, e.target.value);
-                    }} />
-                  </td>
-                  <td>{account.accountType}</td>
-                  <td>{account.customer.name}</td>
-                  <td>{account.customer.email}</td>
-                  <td>
-                    <button onClick={() => { saveBalance(account); }} className="button">
-                      Update
-                    </button>
-                  </td>
-                  <td>
-                    <button onClick={() => { closeAccount(account); }} className="button">
-                      Close
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
+            {accounts
+              .filter((a) => a.isActive)
+              .map((account) => {
+                return (
+                  <tr key={account._id}>
+                    <td>{account._id}</td>
+                    <td>
+                      <input type="number" value={account.balance} onChange={(e) => {
+                        updateBalance(account, e.target.value);
+                      }} />
+                    </td>
+                    <td>{account.accountType}</td>
+                    <td>{account.customer.name}</td>
+                    <td>{account.customer.email}</td>
+                    <td>
+                      <button onClick={() => { saveBalance(account); }} className="button">
+                        Update
+                      </button>
+                    </td>
+                    <td>
+                      <button onClick={() => { closeAccount(account); }} className="button">
+                        Close
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
