@@ -70,7 +70,11 @@ const CustomerProfile = () => {
           <div className="small-margin-top">
             <div className="imageTile">
               {customer.customer.profilePic
-                ? <img src={fileUrl(customer.customer.profilePic)} alt="profile pic" height="100px" />
+                ? (
+                  <div className="uploaded-file">
+                    <img src={fileUrl(customer.customer.profilePic)} alt="profile pic" />
+                  </div>
+                )
                 : <div>No pic uploaded</div>}
             </div>
             <div className="small-margin-top">
