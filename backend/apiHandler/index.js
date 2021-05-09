@@ -132,14 +132,14 @@ module.exports = {
         amount = parseInt(amount);
         const fromAccount = await Account.findById(from);
         if(!mongoose.Types.ObjectId.isValid(to))
-            return res.status(401).json(err(`Payee Account Number is invalid`));
+            return res.status(400).json(err(`Payee Account Number is invalid`));
         const toAccount = await Account.findById(to);
         const customer = req.session.user._id;
         if (fromAccount.customer.toString() !== customer) {
             return res.status(401).json(err(`This account does not belong to you`));
         }
         if (!toAccount) {
-            return res.status(401).json(err(`Payee account number does not exist`));
+            return res.status(400).json(err(`Payee account number does not exist`));
         }
         if (fromAccount.balance < amount) {
             return res.status(400).json(err(`In-sufficient balance in ${from}`));
