@@ -18,7 +18,9 @@ const CustomerProfile = () => {
   const handleOnImageUpload = async ({ files }) => {
     const fileId = files[0];
     await updateCustomer({ profilePic: fileId });
-    setCustomer({ ...customer, profilePic: fileId });
+    const currCustomer = await currentCustomer();
+    setCustomer(currCustomer);
+    setAccounts(currCustomer.accounts);
   };
 
   useEffect(() => {
@@ -63,16 +65,16 @@ const CustomerProfile = () => {
     <div className="body">
       {customer ? (
         <>
-
           <h2>Hello {customer.customer.name}!</h2>
           <div>{customer.email}</div>
           <div className="small-margin-top">
             <div className="imageTile">
               {customer.customer.profilePic
-                ? <img src={fileUrl(customer.customer.profilePic)} alt="profile pic" height="200px" width="150px" />
+                ? <img src={fileUrl(customer.customer.profilePic)} alt="profile pic" height="100px" />
                 : <div>No pic uploaded</div>}
             </div>
             <div className="small-margin-top">
+              Upload profile picture&nbsp;
               <FileUpload singleFile onUpload={handleOnImageUpload} />
             </div>
           </div>
@@ -81,14 +83,14 @@ const CustomerProfile = () => {
           <div>You have {customer.accounts.length} account(s)</div>
 
           <hr />
-
+          Show&nbsp;
           <select defaultValue="all" onChange={handleSelect}>
             <option value="all">All</option>
             <option value="checking">Checking</option>
             <option value="saving">Savings</option>
           </select>
 
-          <table className="table">
+          <table className="table medium-margin-top">
             <thead>
               <tr>
                 <td>Account Id</td>
