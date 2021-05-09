@@ -26,7 +26,7 @@ const AccountRequests = () => {
     <div className="body">
       <h2>Account requests</h2>
       <div>
-        <div>{accountRequests.length === 0 && 'You have no new requests to approve'}</div>
+        <div className="center">{accountRequests.length === 0 && 'You have no new requests to approve'}</div>
         <table className="table">
           <thead>
             <tr>
@@ -49,7 +49,7 @@ const AccountRequests = () => {
                     <td>{account.customer.name}</td>
                     <td>{account.customer.email}</td>
                     <td>
-                      <button onClick={(acc) => { approveRequest(account); }} className="button">
+                      <button onClick={(acc) => { approveRequest(account); }} className="button no-margin-top">
                         Approve
                       </button>
                     </td>
