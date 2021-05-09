@@ -26,7 +26,6 @@ const AccountRequests = () => {
     <div className="body">
       <h2>Account requests</h2>
       <div>
-        <div className="center">{accountRequests.length === 0 && 'You have no new requests to approve'}</div>
         <table className="table">
           <thead>
             <tr>
@@ -39,10 +38,17 @@ const AccountRequests = () => {
             </tr>
           </thead>
           <tbody>
+            {accountRequests.length === 0 && (
+            <tr>
+              <td colSpan={6} className="center">
+                You have no new requests to approve
+              </td>
+            </tr>
+            )}
             {accountRequests.map((account) => {
               return (
                 <>
-                  <tr key={account._id}>
+                  <tr>
                     <td>{account._id}</td>
                     <td>${account.balance}</td>
                     <td>{account.accountType}</td>
@@ -55,7 +61,8 @@ const AccountRequests = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td colSpan={6}>
+                    <td><b>Documents uploaded</b></td>
+                    <td colSpan={5}>
                       <div className="uploaded-file">
                         {account.files.map((f) => {
                           return <img key={f} src={fileUrl(f)} alt={fileUrl(f)} />;

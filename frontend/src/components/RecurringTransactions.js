@@ -14,6 +14,7 @@ const RecurringTransactions = () => {
 
   return (
     <div className="body">
+      <h2>Recurring payments</h2>
       <table className="table">
         <thead>
           <tr>
