@@ -124,7 +124,19 @@ module.exports = {
     },
     updateAccountBalance: async (req, res) => {
         const account = await Account.findById(req.body._id);
-        account.balance = parseInt(req.body.balance);
+        const newBalance = parseInt(req.body.balance);
+        const transaction = {
+            amount: newBalance - account.balance,
+            isExternal: true,
+            toExternal: "Bank Adjustment",
+            description: "Adjusted by bank admin",
+            to: account._id,
+            from: account._id,
+            customer: account.customer
+        };
+        const t = new Transactions(transaction);
+        await t.save();
+        account.balance = newBalance;
         return res.json(await account.save());
     },
     transferAmount: async (req, res) => {
@@ -191,7 +203,6 @@ module.exports = {
     getScheduledTransactions: async (req, res) => {
         const customer = req.session.user._id
         const accounts = (await Account.find({customer})).map((account) => account._id);
-        console.log(accounts);
         const transactions = await Transactions.find(
             {$and: [{from: {$in: accounts}}, {isRecurringPayment: true}]})
             .populate('from')
