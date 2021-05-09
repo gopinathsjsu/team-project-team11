@@ -123,7 +123,7 @@ const CustomerProfile = () => {
           <div className="small-margin-top">
             <h4 className="small-margin-top">Open a new account</h4>
             <div>
-              <div className="small-margin-top"></div>
+              <div className="small-margin-top" />
               <div className="small-margin-top">
                 <i>Account Type</i>&nbsp;&nbsp;
                 Savings
