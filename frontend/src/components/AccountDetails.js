@@ -23,21 +23,32 @@ const AccountDetails = () => {
           <div className="small-margin-top">
             <table className="table">
               <tbody>
-                <tr key={1}>
-                  <td><b>Account Holder: </b>{customer.customer.name}</td>
+                <tr>
+                  <td>Account Holder</td>
+                  <td>{customer.customer.name}</td>
                 </tr>
-                <tr key={2}>
-                  <td><b>Account Id: </b>{account._id}</td>
-                  <td><b>Account type: </b>{account.accountType}</td>
+                <tr>
+                  <td>Account Id</td>
+                  <td>{account._id}</td>
                 </tr>
-                <tr key={3}>
-                  <td><b>Balance: </b>${account.balance}</td>
-                  <td><b>Account status: </b>{account.isActive ? 'Active' : 'Waiting for approval'}</td>
+                <tr>
+                  <td>Account type</td>
+                  <td>{account.accountType}</td>
                 </tr>
-                <tr key={4}>
+                <tr>
+                  <td>Balance</td>
+                  <td>${account.balance}</td>
+                </tr>
+                <tr>
+                  <td>Account status</td>
+                  <td>{account.isActive ? 'Active' : 'Waiting for approval'}</td>
+                </tr>
+                <tr>
                   <td>
-                    <b>Supporting documents:</b>
-                    <div className="uploaded-file medium-margin-top">
+                    Supporting documents
+                  </td>
+                  <td>
+                    <div className="uploaded-file">
                       {account.files.map((f) => {
                         return <img key={f} src={fileUrl(f)} alt={fileUrl(f)} />;
                       })}
@@ -46,7 +57,11 @@ const AccountDetails = () => {
                 </tr>
               </tbody>
             </table>
-            <button className="button"><Link to={{ pathname: '/customerHome/profile' }}>Back</Link></button>
+            <button className="button">
+              <Link to={{ pathname: window.appRoutes.customerProfile }}>
+                Back
+              </Link>
+            </button>
           </div>
 
         </>

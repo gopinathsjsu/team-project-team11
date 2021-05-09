@@ -89,6 +89,7 @@ h2 {
 .large-margin-top {
     margin-top: 36px;
 }
+
 .medium-margin-right {
     margin-right: 20px;
 }
@@ -112,6 +113,12 @@ input[type="text"], input[type="password"] {
     border: none;
     font-size: small;
     font-weight: bold;
+
+}
+
+.button a {
+    color: white;
+    text-decoration: none;
 }
 
 .button.small {
@@ -192,5 +199,5 @@ hr {
 }
 
 .bolder-text {
-    font-weight:800;
+    font-weight: 800;
 }
