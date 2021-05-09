@@ -3,28 +3,36 @@ import { currentCustomer, transferExternalAmount } from '../util/fetch/api';
 
 const BillerPayments = () => {
   const [customer, setCustomer] = useState(null);
+  const [isRecurring, setIsRecurring] = useState(false);
 
   const extAmountRef = useRef(null);
   const extFromRef = useRef(null);
   const extToRef = useRef(null);
   const descriptionRef = useRef(null);
+  const frequencyRef = useRef(null);
+  const startRef = useRef(null);
+  const endRef = useRef(null);
 
   const handleOnExternalTransfer = async () => {
     const from = extFromRef.current.value;
     const amount = extAmountRef.current.value;
     const toExternal = extToRef.current.value;
     const description = descriptionRef.current.value;
+    const startDate = startRef.current.value;
+    const endDate = endRef.current.value;
+    const frequency = frequencyRef.current.value;
+    const isRecurringPayment = isRecurring;
+
     if (amount === '') {
       alert('Amount cant be empty');
       return;
     }
     await transferExternalAmount({
-      toExternal, from, amount, description,
+      toExternal, from, amount, description, startDate, endDate, isRecurringPayment, frequency,
     });
     setCustomer(await currentCustomer());
     alert(`$${amount} transferred`);
     extAmountRef.current.value = '';
-    descriptionRef.current.value = '';
   };
 
   useEffect(() => {
@@ -33,54 +41,61 @@ const BillerPayments = () => {
     })();
   }, []);
 
-  const loadCustomerTransactionPage = () => {
-    if (customer) {
-      return customer.accounts.filter((a) => a.isActive).length > 0
-        ? (
-          <div>
-            <h2>Transfer to external accounts</h2>
-            <div className="flex-column">
-              <div className="medium-margin-top flex">
-                <div className="fixed-width-tags medium-margin-right bolder-text">From&nbsp;&nbsp;</div>
-                <select ref={extFromRef}>
-                  {customer.accounts.filter((a) => a.isActive).map((a) => {
-                    return <option key={a._id} value={a._id}>{a._id} (${a.balance})</option>;
-                  })}
-                </select>
-              </div>
-              <div className="medium-margin-top flex">
-                <div className="fixed-width-tags medium-margin-right  bolder-text">Select Biller&nbsp;&nbsp;</div>
-                <div><select ref={extToRef}>
-                  {[{ name: 'Electricity' }, { name: 'Water' }].map((e, i) => {
-                    return <option key={i}>{e.name}</option>;
-                  })}
-                </select></div>
-              </div>
-
-              <div className="medium-margin-top flex">
-                <div className="fixed-width-tags medium-margin-right bolder-text">Amount&nbsp;&nbsp;</div>
-                <input type="number" ref={extAmountRef} placeholder="Amount" />
-              </div>
-              <div className="medium-margin-top flex">
-                <div className="fixed-width-tags medium-margin-right bolder-text">Description&nbsp;&nbsp;</div>
-                <input type="text" ref={descriptionRef} placeholder="Description" />
-              </div>
-              <div><button className="large-margin-top button large-margin-left  fixed-width-tags" onClick={handleOnExternalTransfer}>Transfer</button></div>
-            </div>
-          </div>
-        ) : (
-          <h2>You dont have any account added yet.
-            Please request for an account to use this feature</h2>
-        );
-    }
-    return 'Loading your profile';
+  const handleOnRecurringChange = () => {
+    setIsRecurring(!isRecurring);
   };
 
-  return (
-    <div className="body">
-      {loadCustomerTransactionPage()}
-    </div>
-  );
+  return customer
+    ? (
+      <div className="body">
+        <h2>Transfer to external accounts</h2>
+        <div className="flex">
+          <div>
+            <span>From&nbsp;&nbsp;</span>
+            <select ref={extFromRef}>
+              {customer.accounts.filter((a) => a.isActive).map((a) => {
+                return <option key={a._id} value={a._id}>{a._id} (${a.balance})</option>;
+              })}
+            </select>
+          </div>
+          <div>
+            <span>&nbsp;&nbsp;to&nbsp;&nbsp;</span>
+            <select ref={extToRef}>
+              {[{ name: 'Electricity' }, { name: 'Water' }].map((e, i) => {
+                return <option key={i}>{e.name}</option>;
+              })}
+            </select>
+          </div>
+          <input type="number" ref={extAmountRef} placeholder="Amount" className="small-margin-left" />
+        </div>
+        <div className="small-margin-top">
+          Description <br />
+          <textarea ref={descriptionRef} cols="50" rows="4" className="small-margin-top" />
+        </div>
+        <div className="small-margin-top">
+          Is recurring&nbsp;&nbsp;
+          <input type="checkbox" checked={isRecurring} onChange={handleOnRecurringChange} />
+        </div>
+        {isRecurring && (
+          <div className="small-margin-top">
+            Frequency <br />
+            <div className="small-margin-top">
+              <select ref={frequencyRef}>
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+                <option value="year">Annual</option>
+              </select>
+                &nbsp;&nbsp;Start&nbsp;&nbsp;<input type="date" ref={startRef} />
+                &nbsp;&nbsp;End&nbsp;&nbsp;<input type="date" ref={endRef} />
+            </div>
+          </div>
+        )}
+        <div className="small-margin-top">
+          <button className="button" onClick={handleOnExternalTransfer}>Transfer</button>
+        </div>
+      </div>
+    )
+    : <div>Loading customer</div>;
 };
 
 export default BillerPayments;

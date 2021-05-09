@@ -8,63 +8,43 @@ const RecurringTransactions = () => {
 
   useEffect(() => {
     (async () => {
-      const transactions = await getScheduledTransactions();
-      console.log(transactions);
-      setTransactions(transactions);
+      setTransactions(await getScheduledTransactions());
     })();
   }, []);
 
   return (
     <div className="body">
-      <>
-        <hr />
-        <table className="table">
-          <thead>
-            <tr>
-              <td>From</td>
-              <td>To</td>
-              <td>Description</td>
-              <td>Frequency</td>
-              <td>First Transaction</td>
-              <td>Last Transaction</td>
-              <td>Next Scheduled Transactions</td>
-              <td>Action</td>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map((a) => {
-              const startDate = new Date(a.startDate);
-              const lastTransactionDate = new Date(a.lastTransactionDate);
-              const nextTransactionDate = new Date(a.lastTransactionDate);
-
-              if (a.frequency === 'W') {
-                nextTransactionDate.setDate(nextTransactionDate.getDate() + 7);
-              } else {
-                nextTransactionDate.setMonth(
-                  lastTransactionDate.getMonth() + 1,
-                );
-              }
-
-              return (
-                <tr key={a._id}>
-                  <td>{a.from._id}</td>
-                  <td>{a.to._id}</td>
-                  <td>{a.description}</td>
-                  <td>{a.frequency === 'W' ? 'Weekly' : 'Monthly'}</td>
-                  <td>
-                    {startDate.getMonth() + 1}/{startDate.getDate()}/{startDate.getFullYear()}</td>
-                  <td>{lastTransactionDate.getMonth() + 1}/{lastTransactionDate.getDate()}
-                    /{lastTransactionDate.getFullYear()}</td>
-                  <td>{nextTransactionDate.getMonth() + 1}/{nextTransactionDate.getDate()}
-                    /{nextTransactionDate.getFullYear()}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-
-        <hr />
-      </>
+      <table className="table">
+        <thead>
+          <tr>
+            <td>Amount</td>
+            <td>To</td>
+            <td>Description</td>
+            <td>Frequency</td>
+            <td>Start date</td>
+            <td>End date</td>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.length === 0 && (
+          <tr className="center">
+            <td colSpan={8}>No scheduled transactions to show</td>
+          </tr>
+          )}
+          {transactions.map((t) => {
+            return (
+              <tr key={t._id}>
+                <td>${t.amount}</td>
+                <td>{t.toExternal}</td>
+                <td>{t.description}</td>
+                <td>{t.frequency}</td>
+                <td>{(new Date(t.startDate).toDateString())}</td>
+                <td>{(new Date(t.endDate).toDateString())}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };

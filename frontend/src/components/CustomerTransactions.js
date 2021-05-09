@@ -30,7 +30,7 @@ const CustomerTransactions = () => {
             <tbody>
               {transactions.length === 0 && (
               <tr>
-                <td colSpan={5}>No transactions yet</td>
+                <td className="center" colSpan={5}>No transactions yet</td>
               </tr>
               )}
               {transactions.map((t, i) => {
