@@ -79,7 +79,7 @@ To keep the thing Simple we followed a rule, First focus on core features which 
 #### Feedback : Sowmya
 Combined with simplicity and courage I implemented feedback value while working on our project. Every commitment was taken seriously by delivering a working software. The software is delivered early to the other team members and a feedback is taken so that necessary changes can be made if needed. Concrete feedback about the current state of the system is necessary. The value of the feedback was a continuously running system that delivered information about itself in a reliable way.
 
-#### Respect and Simplicity : Neha
+#### Respect and Simplicity : Neha 
 Combined with communication, simplicity, and feedback, respect added value to the overall software development process. Respect is a core value, one that lies below the surface of the other four values. I implemented simplicity value while writing the API’s by building what is needed first by making small and simple steps. And made sure that respect value is also satisfied by continuously checking the below points:
 Everyone gives and feels the respect they deserve as a valued team member. 
 Everyone contributes values such as enthusiasm and responsibility.
