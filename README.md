@@ -9,6 +9,11 @@ A banking application which exposes API calls to add new accounts, perform trans
 Install k3d for local cluster 
 https://en.sokube.ch/post/k3s-k3d-k8s-a-new-perfect-match-for-dev-and-test
 
+### EKS
+1. Create cluster with all defaults
+2. Select node IAM Role eks
+3. SSH key pair 86narensj
+4. Node Group scaling configuration - Min/Max set 1
 
 ### Deploy using help
 ```
@@ -37,6 +42,8 @@ helm template -f production.yaml unitedbank ./helm
 helm upgrade --install -f production.yaml unitedbank ./helm
 # check status
 kubectl get all
+# App url -> A new load balancer will be created (use http not https)
+# Delete nodegroup before deleing cluster
 ```
 
 ### EKS
@@ -79,7 +86,7 @@ To keep the thing Simple we followed a rule, First focus on core features which 
 #### Feedback : Sowmya
 Combined with simplicity and courage I implemented feedback value while working on our project. Every commitment was taken seriously by delivering a working software. The software is delivered early to the other team members and a feedback is taken so that necessary changes can be made if needed. Concrete feedback about the current state of the system is necessary. The value of the feedback was a continuously running system that delivered information about itself in a reliable way.
 
-#### Respect and Simplicity : Neha
+#### Respect and Simplicity : Neha 
 Combined with communication, simplicity, and feedback, respect added value to the overall software development process. Respect is a core value, one that lies below the surface of the other four values. I implemented simplicity value while writing the API’s by building what is needed first by making small and simple steps. And made sure that respect value is also satisfied by continuously checking the below points:
 Everyone gives and feels the respect they deserve as a valued team member. 
 Everyone contributes values such as enthusiasm and responsibility.
