@@ -43,7 +43,7 @@ helm upgrade --install -f production.yaml unitedbank ./helm
 # check status
 kubectl get all
 # App url -> A new load balancer will be created (use http not https)
-
+# Delete nodegroup before deleing cluster
 ```
 
 ### EKS
