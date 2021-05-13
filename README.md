@@ -9,6 +9,11 @@ A banking application which exposes API calls to add new accounts, perform trans
 Install k3d for local cluster 
 https://en.sokube.ch/post/k3s-k3d-k8s-a-new-perfect-match-for-dev-and-test
 
+### EKS
+1. Create cluster with all defaults
+2. Select node IAM Role eks
+3. SSH key pair 86narensj
+4. Node Group scaling configuration - Min/Max set 1
 
 ### Deploy using help
 ```
@@ -37,6 +42,8 @@ helm template -f production.yaml unitedbank ./helm
 helm upgrade --install -f production.yaml unitedbank ./helm
 # check status
 kubectl get all
+# App url -> A new load balancer will be created (use http not https)
+
 ```
 
 ### EKS
