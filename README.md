@@ -31,10 +31,10 @@ A Banking application that allows user to perform Banking related operations suc
 
 [@singhal-akash67](https://github.com/singhal-akash67) - Akash Singhal(SJSU ID: )
 
-[@narensulegai](https://github.com/narensulegai) - Naren Sulegai(SJSU ID: )
+[@narensulegai](https://github.com/narensulegai) - Naren Sulegai(SJSU ID: 014483443)
 
 [@NehaPoonia](https://github.com/NehaPoonia)
- [@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900)
+[@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900)
 
 [@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: )
 
@@ -58,13 +58,11 @@ A Banking application that allows user to perform Banking related operations suc
 
 ### Deployment Diagram
 
-![Deployment Diagram]()
+![Deplyment diagram](https://user-images.githubusercontent.com/436710/118338119-345f8200-b4ca-11eb-82e0-72777e22d6b8.png)
 
-### Component Diagram
+### Architecture Diagram
 
-![Component Diagram]()
-
-![Architecture Diagram]()
+![Architecture diagram](https://user-images.githubusercontent.com/436710/118338194-59ec8b80-b4ca-11eb-811d-c6960975fa88.png)
 
 ## Logs
 
