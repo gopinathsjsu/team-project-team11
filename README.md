@@ -40,9 +40,9 @@ A Banking application that allows user to perform Banking related operations suc
 
 ## Features
 
-### Cutomer API
+### Customer API
 
-- Add a new account to the system(Checing,Savings).
+- Add a new account to the system(Checking,Savings).
 - Remove existing accounts (only if there is no balance in the account)
 - Add manual transactions.
 
