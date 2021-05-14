@@ -29,7 +29,7 @@ A Banking application that allows user to perform Banking related operations suc
 
 <strong>Team Members</strong>
 
-[@singhal-akash67](https://github.com/singhal-akash67) - Akash Singhal(SJSU ID: )
+[@singhal-akash67](https://github.com/singhal-akash67) - Akash Singhal(SJSU ID: 015257203) akash.singhal@sjsu.edu
 
 [@narensulegai](https://github.com/narensulegai) - Naren Sulegai(SJSU ID: 014483443)
 
