@@ -36,7 +36,7 @@ A Banking application that allows user to perform Banking related operations suc
 [@NehaPoonia](https://github.com/NehaPoonia)
 [@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900)
 
-[@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: )
+[@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: 01145168)
 
 ## Features
 
