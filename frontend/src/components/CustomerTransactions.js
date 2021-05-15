@@ -24,6 +24,9 @@ const CustomerTransactions = () => {
     setTransactions(transactions);
   };
 
+  const displayAccount = (a) => {
+    return a ? a._id : 'Account not available';
+  };
   return (
     <div className="body">
       {customer ? (
@@ -31,9 +34,9 @@ const CustomerTransactions = () => {
           <h2>Your transactions</h2>
           <div>
             <input type="text" ref={searchRef} placeholder="Search account number" />
-            <button className="button" onClick={handleOnSearch}>Search account</button>
+            <button className="button small-margin-left" onClick={handleOnSearch}>Search account</button>
           </div>
-          <table className="table">
+          <table className="table small-margin-top">
             <thead>
               <tr>
                 <td>From Account</td>
@@ -52,8 +55,8 @@ const CustomerTransactions = () => {
               {transactions.map((t, i) => {
                 return (
                   <tr key={i}>
-                    <td>{t.from._id}</td>
-                    <td>{t.isExternal ? t.toExternal : t.to._id}</td>
+                    <td>{displayAccount(t.from)}</td>
+                    <td>{t.isExternal ? t.toExternal : displayAccount(t.to)}</td>
                     <td>{t.description}</td>
                     <td>${t.amount}</td>
                     <td>{new Date(t.createdAt).toDateString()}</td>
