@@ -12,6 +12,10 @@ const RecurringTransactions = () => {
     })();
   }, []);
 
+  const displayAccount = (a) => {
+    return a ? a._id : 'Account not available';
+  };
+
   return (
     <div className="body">
       <h2>Recurring payments</h2>
@@ -37,7 +41,7 @@ const RecurringTransactions = () => {
             return (
               <tr key={t._id}>
                 <td>${t.amount}</td>
-                <td>{t.isExternal ? t.toExternal : t.to._id }</td>
+                <td>{t.isExternal ? t.toExternal : displayAccount(t.to) }</td>
                 <td>{t.isExternal ? 'Yes' : 'No'}</td>
                 <td>{t.description}</td>
                 <td>{t.frequency}</td>
