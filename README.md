@@ -18,7 +18,15 @@
 A Banking application that allows user to perform Banking related operations such as add new accounts, perform transactions and view transaction history.
 
 ### Design Decision
+We have chosen following tech stack -
 
+1. #### NodeJS - We decided to go ahead with NodeJS because of better efficiency and its single threaded feature. It also provides huge community suppport which makes development work easy. Also it provided many open source libraries. Number of concurrent users we could support using NodeJS was the primary reason of why we used NodeJS at backend. Secondary reason - Most of our resources are good on this therefore learning curve was less which decreased the turn around time.
+
+2. #### ReactJS - We decided to go ahead with ReactJS because of its highly effecient rendering algorithm. Since it is single page application, we got better performance in terms of low memory and low rendering time. Secondly it is more SEO friendly which will help our maketing team. Again for ReactJS, we have very good community support which will boost our development speed. 
+
+3. #### Kubernetes - Due to its portability, Kubernetes can host workloads running on a single cloud as well as workloads that are spread across multiple clouds. In addition, Kubernetes can easily scale its environment from one cloud to another.
+
+4. #### AWS -  Scalable and high-performance. Using AWS tools, Auto Scaling, and Elastic Load Balancing, your application can scale up or down based on demand. Backed by Amazon's massive infrastructure, you have access to compute and storage resources when you need them. 
 
 
 <strong>Team Members</strong>
@@ -30,22 +38,23 @@ A Banking application that allows user to perform Banking related operations suc
 [@NehaPoonia](https://github.com/NehaPoonia)
 [@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900) neha.poonia@sjsu.edu
 
-[@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: 01145168)
+[@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: 01145168) sowmya.dharanipragada@sjsu.edu
 
 ## Features
 
 ### Admin
 
-- Add a new account to the system(Checking,Savings).
-- Remove existing accounts (only if there is no balance in the account)
-- Add manual transactions.
+- Approve a new account.
+- Delete an existing accounts
+- Manual account balance adjustments.
 
 ### Customer
 
-- Internal transaction, from one account to another.
-- External transactions to non-member accounts of the bank.
-- Setting up recurring transactions for internal or external payments
-- Search and view transactions by date/account number etc.
+- Request to open a new account - Savings/Checking
+- Transfer between own accounts.
+- Transfer to external accounts.
+- Setting up recurring transactions to internal or external accounts
+- Search and view transactions with date/account number etc.
 
 ## Architecture
 
@@ -59,6 +68,13 @@ A Banking application that allows user to perform Banking related operations suc
 
 ### UI Wireframes
 
+#### Customer
+
+![Customer API](images/Customer_API.png)
+
+#### Admin
+
+![Admin API](images/admin_API.png)
 
 ### Installations
 
