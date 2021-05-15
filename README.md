@@ -22,6 +22,8 @@ We have chosen following tech stack -
 
 1. NodeJS - We decided to go ahead with NodeJS because of better efficiency and its single threaded feature. It also provides huge community suppport which makes development work easy. Also it provided many open source libraries. Number of concurrent users we could support using NodeJS was the primary reason of why we used NodeJS at backend. Secondary reason - Most of our resources are good on this therefore learning curve was less which decreased the turn around time.
 
+2. ReactJS - We decided to go ahead with ReactJS because of its highly effecient rendering algorithm. Since it is single page application, we got better performance in terms of low memory and low rendering time. 
+
 
 
 <strong>Team Members</strong>
