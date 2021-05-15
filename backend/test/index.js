@@ -95,6 +95,30 @@ describe('An admin', () => {
         });
     });
 
+
+    it('should be able to get account requests using get /apiV1/accountRequests', (done) => {
+        chai.request(server)
+        .get('/apiV1/accountRequests')
+        .set('authorization', admin.token)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(200);
+            done();
+        });
+    });
+
+    it('should be able to update balance using post /apiV1/accountBalance', (done) => {
+        chai.request(server)
+        .post('/apiV1/accountBalance')
+        .set('authorization', admin.token)
+        .send({_id: vars.account._id, balance: 5000})
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(200);
+            assert.equal(res.body.balance, 5000);
+            done();
+        });
+    });
+
+
     it('should be able to delete account using delete /apiV1/account/:id', (done) => {
         chai.request(server)
         .delete(`/apiV1/account/${vars.account._id}`)
@@ -105,6 +129,5 @@ describe('An admin', () => {
             done();
         });
     });
-
 
 });
