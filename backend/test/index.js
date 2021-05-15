@@ -27,10 +27,18 @@ describe('A customer', () => {
       .post('/apiV1/loginCustomer')
       .send({ email: vars.email, password: 'password' })
       .end((err, res) => {
-          assert.equal(res.body.user.email, vars.email);
-        done();
+            assert.equal(res.body.user.email, vars.email);
+            done();
       });
   });
 
-
+  it('should be able to get customer data /apiV1/customer', (done) => {
+    chai.request(server)
+      .get('/apiV1/customer')
+      .set('authorization', vars.token)
+      .end((err, res) => {
+            assert.equal(res.body.customer.email, vars.email);
+        done();
+      });
+    });
 });
