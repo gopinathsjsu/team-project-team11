@@ -1,3 +1,3 @@
 module.exports = {
-    err: (msg) => ({err: msg}),
+    err: (msg) => ({ err: msg }),
 };
