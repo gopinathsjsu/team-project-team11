@@ -24,6 +24,8 @@ We have chosen following tech stack -
 
 2. ReactJS - We decided to go ahead with ReactJS because of its highly effecient rendering algorithm. Since it is single page application, we got better performance in terms of low memory and low rendering time. Secondly it is more SEO friendly which will help our maketing team. Again for ReactJS, we have very good community support which will boost our development speed. 
 
+3. Kubernetes - Due to its portability, Kubernetes can host workloads running on a single cloud as well as workloads that are spread across multiple clouds. In addition, Kubernetes can easily scale its environment from one cloud to another.
+
 
 
 <strong>Team Members</strong>
