@@ -9,8 +9,8 @@
     - [Admin](#features)
 3. [Design Decision](#introduction) 
 4. [Architecture](#architecture)
-5. [UI Wireframes]()
-6. [Installations]()
+5. [UI Wireframes](#Installations)
+6. [Installations](#Installations)
 
 
 ## Introduction
@@ -56,6 +56,9 @@ A Banking application that allows user to perform Banking related operations suc
 ### Architecture Diagram
 
 ![Architecture diagram](https://user-images.githubusercontent.com/436710/118338194-59ec8b80-b4ca-11eb-811d-c6960975fa88.png)
+
+### UI Wireframes
+
 
 ### Installations
 
