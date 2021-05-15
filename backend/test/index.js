@@ -68,6 +68,17 @@ describe('A customer', () => {
             done();
         });
     });
+
+    it('should be able to get account details using get /apiV1/accountDetails/:id', (done) => {
+        chai.request(server)
+        .get(`/apiV1/accountDetails/${vars.account._id}`)
+        .set('authorization', vars.token)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(200);
+            assert.equal(res.body._id, vars.account._id);
+            done();
+        });
+    });
 });
 
 describe('An admin', () => {
@@ -88,7 +99,6 @@ describe('An admin', () => {
         chai.request(server)
         .delete(`/apiV1/account/${vars.account._id}`)
         .set('authorization', admin.token)
-        .send({})
         .end((err, res) => {
             expect(res.statusCode).to.equal(200);
             assert.equal(res.body.accountType, 'saving');
@@ -96,5 +106,5 @@ describe('An admin', () => {
         });
     });
 
-    
+
 });
