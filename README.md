@@ -1,3 +1,5 @@
+[Wiki Page](https://github.com/gopinathsjsu/team-project-team11/wiki)
+
 
 # Online Banking
 
@@ -5,11 +7,9 @@
 
 [@singhal-akash67](https://github.com/singhal-akash67) - Akash Singhal(SJSU ID: 015257203) akash.singhal@sjsu.edu
 
-[@narensulegai](https://github.com/narensulegai) - Naren Sulegai(SJSU ID: 014483443)
+[@narensulegai](https://github.com/narensulegai) - Naren Sulegai(SJSU ID: 014483443) narenjanardhan.sulegai@sjsu.edu
 
-[@NehaPoonia](https://github.com/NehaPoonia)
-
-[@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900) neha.poonia@sjsu.edu
+[@NehaPoonia](https://github.com/NehaPoonia) [@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900) neha.poonia@sjsu.edu
 
 [@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: 01145168) sowmya.dharanipragada@sjsu.edu
 
