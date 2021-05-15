@@ -20,13 +20,13 @@ A Banking application that allows user to perform Banking related operations suc
 ### Design Decision
 We have chosen following tech stack -
 
-1. NodeJS - We decided to go ahead with NodeJS because of better efficiency and its single threaded feature. It also provides huge community suppport which makes development work easy. Also it provided many open source libraries. Number of concurrent users we could support using NodeJS was the primary reason of why we used NodeJS at backend. Secondary reason - Most of our resources are good on this therefore learning curve was less which decreased the turn around time.
+1. #### NodeJS - We decided to go ahead with NodeJS because of better efficiency and its single threaded feature. It also provides huge community suppport which makes development work easy. Also it provided many open source libraries. Number of concurrent users we could support using NodeJS was the primary reason of why we used NodeJS at backend. Secondary reason - Most of our resources are good on this therefore learning curve was less which decreased the turn around time.
 
-2. ReactJS - We decided to go ahead with ReactJS because of its highly effecient rendering algorithm. Since it is single page application, we got better performance in terms of low memory and low rendering time. Secondly it is more SEO friendly which will help our maketing team. Again for ReactJS, we have very good community support which will boost our development speed. 
+2. #### ReactJS - We decided to go ahead with ReactJS because of its highly effecient rendering algorithm. Since it is single page application, we got better performance in terms of low memory and low rendering time. Secondly it is more SEO friendly which will help our maketing team. Again for ReactJS, we have very good community support which will boost our development speed. 
 
-3. Kubernetes - Due to its portability, Kubernetes can host workloads running on a single cloud as well as workloads that are spread across multiple clouds. In addition, Kubernetes can easily scale its environment from one cloud to another.
+3. #### Kubernetes - Due to its portability, Kubernetes can host workloads running on a single cloud as well as workloads that are spread across multiple clouds. In addition, Kubernetes can easily scale its environment from one cloud to another.
 
-4. AWS -  Scalable and high-performance. Using AWS tools, Auto Scaling, and Elastic Load Balancing, your application can scale up or down based on demand. Backed by Amazon's massive infrastructure, you have access to compute and storage resources when you need them. 
+4. #### AWS -  Scalable and high-performance. Using AWS tools, Auto Scaling, and Elastic Load Balancing, your application can scale up or down based on demand. Backed by Amazon's massive infrastructure, you have access to compute and storage resources when you need them. 
 
 
 <strong>Team Members</strong>
