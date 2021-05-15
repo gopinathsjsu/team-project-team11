@@ -95,6 +95,15 @@ describe('An admin', () => {
         });
     });
 
+    it('should be able to get account data using get /apiV1/accounts', (done) => {
+        chai.request(server)
+        .get('/apiV1/accounts')
+        .set('authorization', admin.token)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(200);
+            done();
+        });
+    });
 
     it('should be able to get account requests using get /apiV1/accountRequests', (done) => {
         chai.request(server)
