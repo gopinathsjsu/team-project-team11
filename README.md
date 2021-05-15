@@ -68,6 +68,8 @@ We have chosen following tech stack -
 
 ### UI Wireframes
 
+![Customer API](images/Customer_API.png)
+![Admin API](images/admin_API.png)
 
 ### Installations
 
