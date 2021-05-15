@@ -17,9 +17,9 @@ const AdminLogin = ({ history }) => {
   return (
     <div className="center">
       <h2>Admin Login</h2>
-      <div>
-        (admin@unitedbank.com/admin)
-      </div>
+      {/* <div> */}
+      {/*  (admin@unitedbank.com/admin) */}
+      {/* </div> */}
       <div>
         <input type="text" placeholder="Email" ref={emailRef} />
       </div>
