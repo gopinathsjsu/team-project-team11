@@ -17,17 +17,21 @@ const CustomerTransact = () => {
     const to = toRef.current.value;
     const amount = amountRef.current.value;
     const description = descriptionRef.current.value;
-    const startDate = startRef.current.value;
-    const endDate = endRef.current.value;
-    const frequency = frequencyRef.current.value;
     const isRecurringPayment = isRecurring;
     if (from === to) {
       alert('Cannot transfer between same accounts');
       return;
     }
-    await transferAmount({
-      from, to, amount, description, startDate, endDate, frequency, isRecurringPayment,
-    });
+    const d = {
+      from, to, amount, description,
+    };
+    if (isRecurringPayment) {
+      d.startDate = startRef.current.value;
+      d.endDate = endRef.current.value;
+      d.frequency = frequencyRef.current.value;
+      d.isRecurringPayment = true;
+    }
+    await transferAmount(d);
     setCustomer(await currentCustomer());
     alert(`$${amount} transferred`);
     amountRef.current.value = '';

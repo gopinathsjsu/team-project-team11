@@ -18,18 +18,24 @@ const BillerPayments = () => {
     const amount = extAmountRef.current.value;
     const toExternal = extToRef.current.value;
     const description = descriptionRef.current.value;
-    const startDate = startRef.current.value;
-    const endDate = endRef.current.value;
-    const frequency = frequencyRef.current.value;
     const isRecurringPayment = isRecurring;
 
     if (amount === '') {
       alert('Amount cant be empty');
       return;
     }
-    await transferExternalAmount({
-      toExternal, from, amount, description, startDate, endDate, isRecurringPayment, frequency,
-    });
+    const d = {
+      from, amount, description, toExternal,
+    };
+
+    if (isRecurringPayment) {
+      d.startDate = startRef.current.value;
+      d.endDate = endRef.current.value;
+      d.frequency = frequencyRef.current.value;
+      d.isRecurringPayment = true;
+    }
+
+    await transferExternalAmount(d);
     setCustomer(await currentCustomer());
     alert(`$${amount} transferred`);
     extAmountRef.current.value = '';
