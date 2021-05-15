@@ -26,6 +26,7 @@ We have chosen following tech stack -
 
 3. Kubernetes - Due to its portability, Kubernetes can host workloads running on a single cloud as well as workloads that are spread across multiple clouds. In addition, Kubernetes can easily scale its environment from one cloud to another.
 
+4. AWS -  Scalable and high-performance. Using AWS tools, Auto Scaling, and Elastic Load Balancing, your application can scale up or down based on demand. Backed by Amazon's massive infrastructure, you have access to compute and storage resources when you need them. 
 
 
 <strong>Team Members</strong>
