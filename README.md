@@ -36,16 +36,17 @@ A Banking application that allows user to perform Banking related operations suc
 
 ### Admin
 
-- Add a new account to the system(Checking,Savings).
-- Remove existing accounts (only if there is no balance in the account)
-- Add manual transactions.
+- Approve a new account.
+- Delete an existing accounts
+- Manual account balance adjustments.
 
 ### Customer
 
-- Internal transaction, from one account to another.
-- External transactions to non-member accounts of the bank.
-- Setting up recurring transactions for internal or external payments
-- Search and view transactions by date/account number etc.
+- Request to open a new account - Savings/Checking
+- Transfer between own accounts.
+- Transfer to external accounts.
+- Setting up recurring transactions to internal or external accounts
+- Search and view transactions with date/account number etc.
 
 ## Architecture
 
