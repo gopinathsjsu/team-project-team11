@@ -1,6 +1,14 @@
 
 # Online Banking
 
+<strong>Team Members</strong>
+
+[@singhal-akash67](https://github.com/singhal-akash67) - Akash Singhal(SJSU ID: 015257203) akash.singhal@sjsu.edu
+[@narensulegai](https://github.com/narensulegai) - Naren Sulegai(SJSU ID: 014483443)
+[@NehaPoonia](https://github.com/NehaPoonia)
+[@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900) neha.poonia@sjsu.edu
+[@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: 01145168) sowmya.dharanipragada@sjsu.edu
+
 ### Table of Contents
 
 1. [Introduction](#introduction)
@@ -20,25 +28,14 @@ A Banking application that allows user to perform Banking related operations suc
 ### Design Decision
 We have chosen following tech stack -
 
-1. #### NodeJS - We decided to go ahead with NodeJS because of better efficiency and its single threaded feature. It also provides huge community suppport which makes development work easy. Also it provided many open source libraries. Number of concurrent users we could support using NodeJS was the primary reason of why we used NodeJS at backend. Secondary reason - Most of our resources are good on this therefore learning curve was less which decreased the turn around time.
+1. NodeJS - We decided to go ahead with NodeJS because of better efficiency and its single threaded feature. It also provides huge community suppport which makes development work easy. Also it provided many open source libraries. Number of concurrent users we could support using NodeJS was the primary reason of why we used NodeJS at backend. Secondary reason - Most of our resources are good on this therefore learning curve was less which decreased the turn around time.
 
-2. #### ReactJS - We decided to go ahead with ReactJS because of its highly effecient rendering algorithm. Since it is single page application, we got better performance in terms of low memory and low rendering time. Secondly it is more SEO friendly which will help our maketing team. Again for ReactJS, we have very good community support which will boost our development speed. 
+2. ReactJS - We decided to go ahead with ReactJS because of its highly effecient rendering algorithm. Since it is single page application, we got better performance in terms of low memory and low rendering time. Secondly it is more SEO friendly which will help our maketing team. Again for ReactJS, we have very good community support which will boost our development speed. 
 
-3. #### Kubernetes - Due to its portability, Kubernetes can host workloads running on a single cloud as well as workloads that are spread across multiple clouds. In addition, Kubernetes can easily scale its environment from one cloud to another.
+3. Kubernetes - Due to its portability, Kubernetes can host workloads running on a single cloud as well as workloads that are spread across multiple clouds. In addition, Kubernetes can easily scale its environment from one cloud to another.
 
-4. #### AWS -  Scalable and high-performance. Using AWS tools, Auto Scaling, and Elastic Load Balancing, your application can scale up or down based on demand. Backed by Amazon's massive infrastructure, you have access to compute and storage resources when you need them. 
+4. AWS -  Scalable and high-performance. Using AWS tools, Auto Scaling, and Elastic Load Balancing, your application can scale up or down based on demand. Backed by Amazon's massive infrastructure, you have access to compute and storage resources when you need them. 
 
-
-<strong>Team Members</strong>
-
-[@singhal-akash67](https://github.com/singhal-akash67) - Akash Singhal(SJSU ID: 015257203) akash.singhal@sjsu.edu
-
-[@narensulegai](https://github.com/narensulegai) - Naren Sulegai(SJSU ID: 014483443)
-
-[@NehaPoonia](https://github.com/NehaPoonia)
-[@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900) neha.poonia@sjsu.edu
-
-[@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: 01145168) sowmya.dharanipragada@sjsu.edu
 
 ## Features
 
@@ -65,16 +62,6 @@ We have chosen following tech stack -
 ### Architecture Diagram
 
 ![Architecture diagram](https://user-images.githubusercontent.com/436710/118338194-59ec8b80-b4ca-11eb-811d-c6960975fa88.png)
-
-### UI Wireframes
-
-#### Customer
-
-![Customer API](images/Customer_API.png)
-
-#### Admin
-
-![Admin API](images/admin_API.png)
 
 ### Installations
 
@@ -148,3 +135,14 @@ cd frontend && npm install && export REACT_APP_API_URL=http://localhost:5000 && 
 # to start node backend
 cd backend && npm install && npm start
 ```
+
+
+### UI Wireframes
+
+#### Customer
+
+![Customer API](images/Customer_API.png)
+
+#### Admin
+
+![Admin API](images/admin_API.png)
