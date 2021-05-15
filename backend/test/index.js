@@ -6,7 +6,8 @@ const server = require('../server');
 chai.should();
 chai.use(chaiHttp);
 
-const vars = { token: null, customer: null, email: null };
+const vars = { token: null, customer: null, email: null, account: null };
+const admin = { token: null, email: null, user: null, scope: 'admin' };
 const agent = chai.request.agent(server);
 
 describe('A customer', () => {
@@ -61,10 +62,39 @@ describe('A customer', () => {
         .set('authorization', vars.token)
         .send({ customer:vars.customer, accountType:'saving'})
         .end((err, res) => {
+            vars.account = res.body;
+            expect(res.statusCode).to.equal(200);
+            assert.equal(res.body.accountType, 'saving');
+            done();
+        });
+    });
+});
+
+describe('An admin', () => {
+    beforeEach((done) => {
+        admin.email = 'admin@unitedbank.com';
+        agent
+        .post('/apiV1/loginAdmin')
+        .send({ email: admin.email, password: 'admin' })
+        .end((err, res) => {
+            assert.equal(res.body.user.name, 'Admin');
+            admin.user = res.body.user;
+            admin.token = res.body.token;
+            done();
+        });
+    });
+
+    it('should be able to delete account using delete /apiV1/account/:id', (done) => {
+        chai.request(server)
+        .delete(`/apiV1/account/${vars.account._id}`)
+        .set('authorization', admin.token)
+        .send({})
+        .end((err, res) => {
             expect(res.statusCode).to.equal(200);
             assert.equal(res.body.accountType, 'saving');
             done();
         });
     });
 
+    
 });
