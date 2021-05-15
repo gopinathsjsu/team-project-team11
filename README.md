@@ -140,6 +140,9 @@ cd frontend && npm install && export REACT_APP_API_URL=http://localhost:5000 && 
 cd backend && npm install && npm start
 ```
 
+Mocha Test
+
+![WhatsApp Image 2021-05-14 at 9 23 34 PM](https://user-images.githubusercontent.com/436710/118380935-c59e2980-b59a-11eb-8fc4-05a9002b4050.jpeg)
 
 ### UI Wireframes
 
