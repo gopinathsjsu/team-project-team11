@@ -8,7 +8,7 @@ const handler = require('./apiHandler');
 
 const app = express();
 app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cookieParser());
 
 app.use(cors({
@@ -17,10 +17,10 @@ app.use(cors({
 }));
 
 app.use((req,
-         res,
-         next) => {
+    res,
+    next) => {
     const token = req.header('authorization');
-    req.session = {scope: null};
+    req.session = { scope: null };
     if (token) {
         try {
             jwt.verify(token, process.env.JWT_SECRET);
@@ -54,14 +54,14 @@ app.use((req,
 ].forEach((r) => {
     app[r[0]]("/apiV1/" + r[1], async (req, res, next) => {
         if (r[3] !== null && r[3] !== req.session.scope) {
-            res.status(401).json({err: 'You cannot access!'});
+            res.status(401).json({ err: 'You cannot access!' });
             return;
         }
         try {
             await r[2](req, res);
         } catch (e) {
             //Dont show message in prod
-            res.status(500).json({err: 'Something went wrong! ' + e.message});
+            res.status(500).json({ err: 'Something went wrong! ' + e.message });
             console.log(e);
             next();
         }
