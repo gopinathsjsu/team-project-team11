@@ -21,8 +21,8 @@
     - [Admin](#features)
 3. [Design Decision](#introduction) 
 4. [Architecture](#architecture)
-5. [UI Wireframes](#Installations)
-6. [Installations](#Installations)
+5. [UI Wireframes](#ui-wireframes)
+6. [Installations](#dev-set-up)
 
 
 ## Introduction
