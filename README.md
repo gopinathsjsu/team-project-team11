@@ -38,7 +38,7 @@ We have chosen following tech stack -
 [@NehaPoonia](https://github.com/NehaPoonia)
 [@Nehapoonia01](https://github.com/Nehapoonia01) - Neha Poonia(SJSU ID: 015252900) neha.poonia@sjsu.edu
 
-[@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: 01145168)
+[@sowmyadvn](https://github.com/sowmyadvn) - Sowmya Dharani(SJSU ID: 01145168) sowmya.dharanipragada@sjsu.edu
 
 ## Features
 
